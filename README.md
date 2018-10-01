@@ -14,7 +14,7 @@ During this phase, 18F will provide GSA OSC with the following:
 
 - Eleni Gesch-Karamanlidis, Strategist
 - Ron Bronson, Content Designer [@quarterback](https://github.com/quarterback)
-- Olesya Minina, Engagement Manager [@ominina](https://github.com/ominina)
+- Olesya Minina, Account Manager [@ominina](https://github.com/ominina)
 
 ## GSA Partners
 - Justin Ward, justin.ward@gsa.gov
