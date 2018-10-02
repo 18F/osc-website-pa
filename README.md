@@ -1,7 +1,9 @@
 # GSA OSC Web Presence
 
 ## Project Description
-18F will work to understand how GSA websites and systems are currently structured, evaluate user needs and challenges, and conduct a review of GSA’s overall digital presence. 18F will then define a strategy and roadmap for how to address the most pressing challenges with the current information architecture of GSA’s websites, ultimately driving towards a simplified site structure that better resonates with users. Following the path analysis, 18F will prepare a synthesis of findings as well as preliminary recommendations identifying the next steps towards developing the requirements for FAS to acquire a solution for OSC.  
+18F will work to understand how GSA websites and systems are currently structured, evaluate user needs and challenges, and conduct a review of GSA’s overall digital presence. 18F will then define a strategy and roadmap for how to address the most pressing challenges with the current information architecture of GSA’s websites, ultimately driving towards a simplified site structure that better resonates with users. 
+
+Following the path analysis, 18F will prepare a synthesis of findings as well as preliminary recommendations identifying the next steps towards developing the requirements for FAS to acquire a solution for OSC.  
 
 During this phase, 18F will provide GSA OSC with the following:
 
