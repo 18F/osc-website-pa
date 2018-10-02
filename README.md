@@ -24,10 +24,10 @@ During this phase, 18F will provide GSA OSC with the following:
 
 ## 18F Team Process
 
-- **Stand-ups**: Daily,[slack-channel] 9:30 ET / 8:30 CT
-- **Shipping News**: Update document during the week, submit on Fridays. You can
-  find all the shipping news documents in the [`shipping-news`
-  directory](./shipping-news).
+- **Stand-ups**: Daily,[osc-gsa-web-presence][slack-channel] 9:30 ET / 8:30 CT
+- **Weekly Updates**: Update document during the week, submit on Fridays. You can
+  find all the weekly update documents in the [`weekly-update`
+  directory](./weekly-update).
 - **Tracking work**: [Github Projects](https://github.com/18F/osc-website-pa/projects) (note that since this is an 8 week engagement, we are breaking up our work into 1 week sprints)
 - **OSC + 18F check ins**: Weekly video meeting with client, Fridays 11-1130am ET
 - **CPS + 18F check-ins**: weekly to discuss budget and overall progress/blockers
