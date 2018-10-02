@@ -24,7 +24,7 @@ During this phase, 18F will provide GSA OSC with the following:
 
 ## 18F Team Process
 
-- **Stand-ups**: Daily, [#usda-snap-pa][slack-channel] 9:30 ET / 8:30 CT
+- **Stand-ups**: Daily,[slack-channel] 9:30 ET / 8:30 CT
 - **Shipping News**: Update document during the week, submit on Fridays. You can
   find all the shipping news documents in the [`shipping-news`
   directory](./shipping-news).
