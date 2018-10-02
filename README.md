@@ -14,7 +14,7 @@ During this phase, 18F will provide GSA OSC with the following:
 
 - Eleni Gesch-Karamanlidis, Strategist
 - Ron Bronson, Content Designer [@quarterback](https://github.com/quarterback)
-- Olesya Minina, Account Manager [@ominina](https://github.com/ominina)
+- Olesya Minina, Engagement Manager [@ominina](https://github.com/ominina)
 
 ## GSA Partners
 - Justin Ward, justin.ward@gsa.gov
@@ -35,10 +35,9 @@ During this phase, 18F will provide GSA OSC with the following:
 
 <!-- Read more about the Team Process in the [TeamProcess.md](TeamProcess.md) documentation. -->
 
-<!-- ## Path Analysis Timeline
-| <p align=center> Week 1 <br> 4/16-4/20 </p> | <p align=center> Week 2-3 <br> 4/23-5/4 </p> | <p align=center> Week 4-6 <br> 5/7-5/25 </p> | <p align=center> Week 7-8 <br> 5/29-6/8 </p> |
+## Path Analysis Timeline
+| <p align=center> Week 1 <br> 9/17-4/21 </p> | <p align=center> Week 2-3 <br> 7/24-10/5 </p> | <p align=center> Week 4-6 <br> 10/8-10/19 </p> | <p align=center> Week 7-8 <br> 10/22-11/2 </p> |
 | ------ | -------- | -------- | -------- |
 | Prep Kickoff | Kickoff & Research | Initial findings & Mid-project sync | Synthesis & Final Presentation | 
- -->
 
 [slack-channel]: https://gsa-tts.slack.com/messages/CCMV970G1
