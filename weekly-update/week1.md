@@ -1,6 +1,6 @@
 Hi Team,
 
-Completed this week:
+**Completed this week:**
 
 -   Prepped for and conducted kickoff meeting for PA
 
@@ -10,7 +10,7 @@ Completed this week:
 
 -   Incorporated feedback from weekly update into proposed problem statement, scope, and next steps for Week 2.
 
-Goals for next week:
+**Goals for next week:**
 
 -   Begin first of two weeks of research
 
@@ -18,7 +18,7 @@ Goals for next week:
 
 -   Reminder: [Trello](https://trello.com/b/fGlFYb3w/osc-gsa-web-presence) lists the specific tasks we're working on
 
-What we're seeing/thinking about:
+**What we're seeing/thinking about:**
 
 -   What we learned during kickoff meeting
 
@@ -106,7 +106,7 @@ What we're seeing/thinking about:
 
 -   Here's a chance to be inventive! With no existing governance policies, there are opportunities to fill gaps that can evolve along with the GSA.gov domain.
 
-Funding status:
+**Funding status:**
 
 -   As of 9/15/2018, we have spent $9,336 and have $760,664 remaining
 
