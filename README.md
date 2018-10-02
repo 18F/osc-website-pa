@@ -16,10 +16,10 @@ During this phase, 18F will provide GSA OSC with the following:
 - Olesya Minina, Engagement Manager [@ominina](https://github.com/ominina)
 
 ## GSA Partners
-- Justin Ward, justin.ward@gsa.gov
-- Sarah Bryant, sarah.bryant@gsa.gov
-- Anahita Reilly, anahita.reilly@gsa.gov
-- Matthew Ford, matthew.ford@gsa.gov
+- Justin Ward 
+- Sarah Bryant
+- Anahita Reilly 
+- Matthew Ford
 
 ## 18F Team Process
 
