@@ -13,9 +13,9 @@ During this phase, 18F will provide GSA OSC with the following:
 
 ## 18F Team
 
-- Ron Bronson, Experience Designer & Project Lead [@quarterback](https://github.com/quarterback)
+- Ron Bronson, Information Architect & Project Lead [@quarterback](https://github.com/quarterback)
 - Austin Hernandez, Visual Designer, [@austinhernandez](http://github.com/austinhernandez)
-- Jeff Durland, Content Designer [@durland18F](http://github.com/durland18F)
+- Jeff Durland, Experience Designer, [@durland18F](http://github.com/durland18F)
 - Olesya Minina, Engagement Manager [@ominina](https://github.com/ominina)
 
 
