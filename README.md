@@ -13,15 +13,17 @@ During this phase, 18F will provide GSA OSC with the following:
 
 ## 18F Team
 
-- Eleni Gesch-Karamanlidis, Strategist
-- Ron Bronson, Content Designer [@quarterback](https://github.com/quarterback)
+- Ron Bronson, Experience Designer & Project Lead [@quarterback](https://github.com/quarterback)
+- Austin Hernandez, Visual Designer, [@austinhernandez](http://github.com/austinhernandez)
+- Jeff Durland, Content Designer [@durland18F](http://github.com/durland18F)
 - Olesya Minina, Engagement Manager [@ominina](https://github.com/ominina)
 
+
 ## GSA Partners
-- Justin Ward 
-- Sarah Bryant
-- Anahita Reilly 
-- Matthew Ford
+- Justin Ward, GSA Office of Strategic Communications
+- Sarah Bryant, GSA Office of Strategic Communications
+- Anahita Reilly, GSA Chief Customer Officer
+- Matthew Ford, Assistant GSA Chief Customer Officer
 
 ## 18F Team Process
 
