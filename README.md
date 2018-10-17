@@ -27,7 +27,7 @@ During this phase, 18F will provide GSA OSC with the following:
 
 ## 18F Team Process
 
-- **Stand-ups**: Daily,[osc-gsa-web-presence][slack-channel] 9:30 ET / 8:30 CT
+- **Stand-ups**: Daily,[osc-gsa-web-presence][slack-channel] 12:00pm EST
 - **Weekly Updates**: Update document during the week, submit on Fridays. You can
   find all the weekly update documents in the [`weekly-update`
   directory](./weekly-update).
