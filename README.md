@@ -17,6 +17,7 @@ During this phase, 18F will provide GSA OSC with the following:
 - Austin Hernandez, Visual Designer, [@austinhernandez](http://github.com/austinhernandez)
 - Jeff Durland, Experience Designer, [@durland18F](http://github.com/durland18F)
 - Olesya Minina, Engagement Manager [@ominina](https://github.com/ominina)
+- Corey Mahoney, Strategic Advisor, [@coreycaitlin](https://github.com/coreycaitlin)
 
 
 ## GSA Partners
