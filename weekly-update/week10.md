@@ -1,6 +1,6 @@
 Hello from Friday!
 
-This week, our team has been heads down iterating on prototyping a Vendor Education Center experience styled with the U.S. Web Design System.
+This week, our team has been heads down iterating on prototyping a Vendor Education Center experience styled with the U.S. Web Design System. On the development side, we've been working on setting up a sandbox environment with Drupal 8 to prototype in. 
 
 We've also been preparing for next Wednesday's meeting (December 12th) from 1230-2pm (Eastern). During our visit, members of our team will present progress and a roadmap of the rest of the project, and to participate in the Federal Marketplace Industry Day that morning.
 
@@ -8,7 +8,7 @@ Next week besides traveling to and from D.C. for the presentation, we'll finaliz
 
 We added another part-time engineer to the project this week, Scott Weber who is based in Louisville, who joins Carter to accelerate our development capacity for this project.
 
-You can track our project tasks on[  Github](https://github.com/18F/osc-website-pa/projects/1).
+You can track our project tasks on[Github](https://github.com/18F/osc-website-pa/projects/1).
 
 Funding status:
 
