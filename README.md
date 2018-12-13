@@ -13,12 +13,17 @@ During this phase, 18F will provide GSA OSC with the following:
 
 ## 18F Team
 
-- Ron Bronson, Information Architect & Project Lead [@quarterback](https://github.com/quarterback)
+- T. Carter Baxter, Front End Engineer, 
+- Ron Bronson, Service Designer & Project Lead [@quarterback](https://github.com/quarterback)
 - Austin Hernandez, Visual Designer, [@austinhernandez](http://github.com/austinhernandez)
-- Jeff Durland, Experience Designer, [@durland18F](http://github.com/durland18F)
+- Jeff Durland, Content Designer, [@durland18F](http://github.com/durland18F)
 - Olesya Minina, Engagement Manager [@ominina](https://github.com/ominina)
-- Corey Mahoney, Strategic Advisor, [@coreycaitlin](https://github.com/coreycaitlin)
+- Torey Vanek, Product Manager
+- Scott Weber, Front End Engineer
 
+## Project Alumni 
+- Eleni Gesch-Karmandalis, Strategist
+- Corey Mahoney, Strategic Advisor
 
 ## GSA Partners
 - Justin Ward, GSA Office of Strategic Communications
@@ -36,12 +41,3 @@ During this phase, 18F will provide GSA OSC with the following:
 - **OSC + 18F check ins**: Weekly video meeting with client, Fridays 11-1130am ET
 - **CPS + 18F check-ins**: weekly to discuss budget and overall progress/blockers
 - **Retrospectives**: Weekly
-
-<!-- Read more about the Team Process in the [TeamProcess.md](TeamProcess.md) documentation. -->
-
-## Path Analysis Timeline
-| <p align=center> Week 1 <br> 9/17-4/21 </p> | <p align=center> Week 2-3 <br> 7/24-10/5 </p> | <p align=center> Week 4-6 <br> 10/8-10/19 </p> | <p align=center> Week 7-8 <br> 10/22-11/2 </p> |
-| ------ | -------- | -------- | -------- |
-| Prep Kickoff | Kickoff & Research | Initial findings & Mid-project sync | Synthesis & Final Presentation | 
-
-[slack-channel]: https://gsa-tts.slack.com/messages/CCMV970G1
