@@ -13,13 +13,13 @@ During this phase, 18F will provide GSA OSC with the following:
 
 ## 18F Team
 
-- T. Carter Baxter, Front End Engineer, 
+- T. Carter Baxter, Front End Engineer, [@tbaxter-18F](https://github.com/tbaxter-18f)
 - Ron Bronson, Service Designer & Project Lead [@quarterback](https://github.com/quarterback)
 - Austin Hernandez, Visual Designer, [@austinhernandez](http://github.com/austinhernandez)
 - Jeff Durland, Content Designer, [@durland18F](http://github.com/durland18F)
 - Olesya Minina, Engagement Manager [@ominina](https://github.com/ominina)
-- Torey Vanek, Product Manager
-- Scott Weber, Front End Engineer
+- Torey Vanek, Product Manager [@toreyvanek1](https://github.com/toreyvanek1)
+- Scott Weber, Front End Engineer, [@line47](https://github.com/line47)
 
 ## Project Alumni 
 - Eleni Gesch-Karmandalis, Strategist
