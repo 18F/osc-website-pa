@@ -41,3 +41,30 @@ During this phase, 18F will provide GSA OSC with the following:
 - **OSC + 18F check ins**: Weekly video meeting with client, Fridays 11-1130am ET
 - **CPS + 18F check-ins**: weekly to discuss budget and overall progress/blockers
 - **Retrospectives**: Weekly
+
+
+## Setting up local development
+
+Local development is based heavily on [CircleCI's Docker + Drupal deployment guide](https://circleci.com/blog/continuous-drupal-p1-maintaining-with-docker-git-composer/).
+
+Once you've pulled down this repo, `cd` into it, and then, 
+from the root of the directory, run:
+
+```docker-compose up -d --build```
+
+which tells Docker Compose to do a fresh build of the enclosed Dockerfile.
+
+That should create a container called `osc-website-pa_drupal_1` on port :80. 
+You can confirm by running `docker-compose ps` and viewing the output. 
+You want the container on :80, whatever it may be called.
+
+Then run
+```docker exec -it osc-website-pa_drupal_1 bash```
+which starts the container, opens a `bash` shell, and drops you into the `apps` directory.
+From there, you'll use composer to install Drupal:
+
+```
+composer create-project drupal-composer/drupal-project:8.x-dev /app --stability dev --no-interaction
+```
+
+
