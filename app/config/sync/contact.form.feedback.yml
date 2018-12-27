@@ -1,0 +1,14 @@
+uuid: acf71d34-2d82-4f1e-9698-02da96ac88c8
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: vymHlgJy26BuI5GGj9-IXjwR3dRC5C0tij4BpWJnoqw
+id: feedback
+label: 'Website feedback'
+recipients:
+  - drupal@test.test
+reply: ''
+weight: 0
+message: 'Your message has been sent.'
+redirect: ''
