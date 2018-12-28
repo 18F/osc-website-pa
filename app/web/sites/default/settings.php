@@ -280,7 +280,7 @@ $config_directories = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '02_i2Mrp2ACadwIVHm9q4501QfY-kAgdcTdFxYRF4hxtMt2zqNxkwhWI8u7yNU27pbwpkFt9XQ';
+$settings['hash_salt'] = 'ut9Q4WtKAXelqmnYsVtQGxzOMXY6hpz8io4MfimWT1gwKNAld7OA8oK90DBfU00ouQgZGCtbxw';
 
 /**
  * Deployment identifier.
