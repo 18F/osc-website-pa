@@ -61,7 +61,8 @@ You want the container on :80, whatever it may be called.
 Then run
 ```docker exec -it oscwebsitepa_drupal_1 bash```,
 which starts the container, opens a `bash` shell, and drops you into the `apps` directory.
-From there, you'll use composer to install Drupal:
+
+From there, you'll use [Composer](https://getcomposer.org) to install Drupal:
 
 ```
 composer create-project drupal-composer/drupal-project:8.x-dev /app --stability dev --no-interaction
