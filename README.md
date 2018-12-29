@@ -62,10 +62,17 @@ Then run
 ```docker exec -it oscwebsitepa_drupal_1 bash```,
 which starts the container, opens a `bash` shell, and drops you into the `app` directory.
 
-From there, you'll use [Composer](https://getcomposer.org) to install Drupal:
+From there, you'll use [Composer](https://getcomposer.org) to install Drupal and
+everything else that's specified in the `composer.lock` file:
 
 ```
-composer create-project drupal-composer/drupal-project:8.x-dev /app --stability dev --no-interaction
+composer install
 ```
 
+Then spin up the site locally:
 
+```
+docker-compose up
+```
+
+Once you see a message about `apache2 -D FOREGROUND`, you're good to go. Navigate to http://localhost:8080.
