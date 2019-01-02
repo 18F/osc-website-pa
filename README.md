@@ -54,17 +54,25 @@ from the root of the directory, run:
 
 which tells Docker Compose to do a fresh build of the enclosed Dockerfile.
 
-That should create a container called `osc-website-pa_drupal_1` on port :80. 
+That should create a container called `oscwebsitepa_drupal_1` on port 80.
 You can confirm by running `docker-compose ps` and viewing the output. 
 You want the container on :80, whatever it may be called.
 
 Then run
-```docker exec -it osc-website-pa_drupal_1 bash```
-which starts the container, opens a `bash` shell, and drops you into the `apps` directory.
-From there, you'll use composer to install Drupal:
+```docker exec -it oscwebsitepa_drupal_1 bash```,
+which starts the container, opens a `bash` shell, and drops you into the `app` directory.
+
+From there, you'll use [Composer](https://getcomposer.org) to install Drupal and
+everything else that's specified in the `composer.lock` file:
 
 ```
-composer create-project drupal-composer/drupal-project:8.x-dev /app --stability dev --no-interaction
+composer install
 ```
 
+Then spin up the site locally:
 
+```
+docker-compose up
+```
+
+Once you see a message about `apache2 -D FOREGROUND`, you're good to go. Navigate to http://localhost:8080.
