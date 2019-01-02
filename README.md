@@ -75,4 +75,5 @@ Then spin up the site locally:
 docker-compose up
 ```
 
-Once you see a message about `apache2 -D FOREGROUND`, you're good to go. Navigate to http://localhost:8080.
+Once you see a message about `apache2 -D FOREGROUND`, you're good to go. 
+Navigate to http://localhost:8080.
