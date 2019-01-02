@@ -17,7 +17,7 @@ During this phase, 18F will provide GSA OSC with the following:
 - Ron Bronson, Service Designer & Project Lead, [@quarterback](https://github.com/quarterback)
 - Jeff Durland, Content Designer, [@durland18F](http://github.com/durland18F)
 - Austin Hernandez, Visual Designer, [@austinhernandez](http://github.com/austinhernandez)
-- Olesya Minina, Engagement Manager, [@ominina](https://github.com/ominina)
+- Olesya Minina, Account Manager, [@ominina](https://github.com/ominina)
 - Torey Vanek, Product Manager, [@toreyvanek1](https://github.com/toreyvanek1)
 - Scott Weber, Front End Engineer, [@line47](https://github.com/line47)
 
