@@ -18,7 +18,7 @@ During this phase, 18F will provide GSA OSC with the following:
 - Jeff Durland, Content Designer, [@durland18F](http://github.com/durland18F)
 - Austin Hernandez, Visual Designer, [@austinhernandez](http://github.com/austinhernandez)
 - Olesya Minina, Account Manager, [@ominina](https://github.com/ominina)
-- Torey Vanek, Product Manager, [@toreyvanek1](https://github.com/toreyvanek1)
+- Torey Vanek, Product, [@toreyvanek1](https://github.com/toreyvanek1)
 - Scott Weber, Front End Engineer, [@line47](https://github.com/line47)
 
 ## Project Alumni 
@@ -37,7 +37,7 @@ During this phase, 18F will provide GSA OSC with the following:
 - **Weekly Updates**: Update document during the week, submit on Fridays. You can
   find all the weekly update documents in the [`weekly-update`
   directory](./weekly-update).
-- **Tracking work**: [Github Projects](https://github.com/18F/osc-website-pa/projects) (note that since this is an 8 week engagement, we are breaking up our work into 1 week sprints)
+- **Tracking work**: [Github Projects](https://github.com/18F/osc-website-pa/projects) 
 - **OSC + 18F check ins**: Weekly video meeting with client, Fridays 11-1130am ET
 - **CPS + 18F check-ins**: weekly to discuss budget and overall progress/blockers
 - **Retrospectives**: Weekly
