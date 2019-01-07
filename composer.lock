@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "226f664dcbc8d55ee76fdc020f9efe44",
+    "content-hash": "e939ffc5c5b370883dc4f2f068e50ac1",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1765,6 +1765,54 @@
             "homepage": "https://www.drupal.org/project/flysystem_s3",
             "support": {
                 "source": "http://cgit.drupalcode.org/flysystem_s3"
+            }
+        },
+        {
+            "name": "drupal/uswds",
+            "version": "1.0.0-beta3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/uswds",
+                "reference": "8.x-1.0-beta3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/uswds-8.x-1.0-beta3.zip",
+                "reference": "8.x-1.0-beta3",
+                "shasum": "f220e5edc916417c9215a54ac8fcd4247669a855"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-theme",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-beta3",
+                    "datestamp": "1515004684",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "brockfanning",
+                    "homepage": "https://www.drupal.org/user/709486"
+                }
+            ],
+            "description": "Drupal theme for the U.S. Web Design Standards library.",
+            "homepage": "https://www.drupal.org/project/uswds",
+            "support": {
+                "source": "http://cgit.drupalcode.org/uswds",
+                "issues": "https://www.drupal.org/project/issues/uswds?categories=All"
             }
         },
         {
@@ -6574,7 +6622,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "drupal/flysystem_s3": 15
+        "drupal/flysystem_s3": 15,
+        "drupal/uswds": 10
     },
     "prefer-stable": true,
     "prefer-lowest": false,
