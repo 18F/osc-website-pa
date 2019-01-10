@@ -769,6 +769,7 @@ $settings['entity_update_batch_size'] = 50;
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
 $config_directories['sync'] = '../config/sync';
+$config['content_directory'] = './sites/default/content';
 $databases['default']['default'] = array (
   'database' => 'drupal',
   'username' => 'mysql',
