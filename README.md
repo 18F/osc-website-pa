@@ -77,3 +77,43 @@ docker-compose up
 
 Once you see a message about `apache2 -D FOREGROUND`, you're good to go. 
 Navigate to http://localhost:8080.
+
+
+### Content workflow
+
+We'll treat some pieces of content similarly to configuration, in that we want
+to deploy them with the codebase rather than adding/modifying them in individual
+environments.
+
+The steps for this are:
+1. Get the latest code.
+1. Create a feature branch.
+1. Add/edit content via the Drupal UI.
+1. Export the content.
+1. Commit the changes.
+1. Push your branch to GitHub.
+1. Create a pull request to be reviewed.
+
+To add or edit content, start the application:
+
+```
+docker-compose up
+```
+
+Then [log in](http://localhost:8080/user/login).
+Create or edit content (pages, etc.) through the Drupal UI.
+
+Next, we'll export this content via Drush. To access Drush, open a shell in the same manner as before:
+```docker exec -it osc-website-pa_drupal_1 bash```
+
+Then run whichever of the following commands is needed:
+```sh
+# To export all entities of a particular type:
+drush default-content-deploy:export [type-of-entity, e.g. page]
+# To export individual entities:
+drush default-content-deploy:export [type-of-entity] --entity-id=[ids e.g. 1,3,7]
+```
+
+Then, we'll review all of the changes and commit those that are relevant.
+Notably, we're expecting new or modified files in `web/sites/default/content`.
+After committing, we'll send to GitHub and create a pull request.
