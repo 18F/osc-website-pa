@@ -56,7 +56,7 @@ You want the container on :80, whatever it may be called.
 1. Run ```docker exec -it osc-website-pa_drupal_1 bash```  which starts the container, opens a `bash` shell, and drops you into the `app` directory.
 1. Run ```composer install```[Composer](https://getcomposer.org) to install Drupal and
 everything else that's specified in the `composer.lock` file:
-1. Run ```docker-compose up``` to run the site locally:
+1. `cd -` back to the root and run ```docker-compose up``` to run the site locally:
 1. Navigate to http://localhost:8080.
 Once you see a message about `apache2 -D FOREGROUND`, you're good to go. 
 
