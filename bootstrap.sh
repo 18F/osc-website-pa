@@ -40,21 +40,13 @@ if [ "${CF_INSTANCE_INDEX:-''}" == "0" ] && [ "${APP_NAME}" == "web" ]; then
   # Mild data migration: fully delete database entries related to these
   # modules. These plugins (and the dependencies) can be removed once they've
   # been uninstalled in all environments
-  drupal --root=$APP_ROOT/web module:uninstall contact
-  # drupal --root=$APP_ROOT/web theme:uninstall bootstrap
 
   # Sync configs from code
   drupal --root=$APP_ROOT/web config:import
 
   # Secrets
   ADMIN_EMAIL=$(echo $SECRETS | jq -r '.ADMIN_EMAIL')
-  BRIGHTCOVE_ACCOUNT=$(echo $SECRETS | jq -r '.BRIGHTCOVE_ACCOUNT')
-  BRIGHTCOVE_CLIENT=$(echo $SECRETS | jq -r '.BRIGHTCOVE_CLIENT')
-  BRIGHTCOVE_SECRET=$(echo $SECRETS | jq -r '.BRIGHTCOVE_SECRET')
   CRON_KEY=$(echo $SECRETS | jq -r '.CRON_KEY')
-  drupal --root=$APP_ROOT/web config:override brightcove.brightcove_api_client.nsf_brightcove account_id $BRIGHTCOVE_ACCOUNT > /dev/null
-  drupal --root=$APP_ROOT/web config:override brightcove.brightcove_api_client.nsf_brightcove client_id $BRIGHTCOVE_CLIENT > /dev/null
-  drupal --root=$APP_ROOT/web config:override brightcove.brightcove_api_client.nsf_brightcove secret_key $BRIGHTCOVE_SECRET > /dev/null
   drupal --root=$APP_ROOT/web config:override scheduler.settings lightweight_cron_access_key $CRON_KEY > /dev/null
   drupal --root=$APP_ROOT/web config:override system.site mail $ADMIN_EMAIL > /dev/null
   drupal --root=$APP_ROOT/web config:override update.settings notification.emails.0 $ADMIN_EMAIL > /dev/null
