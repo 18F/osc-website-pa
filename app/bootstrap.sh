@@ -18,7 +18,6 @@ bootstrap() {
     : ${ADMIN_NAME?} ${ADMIN_PASS?}
 
     rds_creds=$(echo $VCAP_SERVICES | jq -r '.["aws-rds"][0].credentials')
-    echo rds_creds: $rds_creds
 #    [ "$rds_creds" = "null" ] && fail "rds_creds are null; need to bind database?"
 
     db_type=mysql
