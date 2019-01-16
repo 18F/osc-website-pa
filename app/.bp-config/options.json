@@ -4,7 +4,7 @@
   ],
   "COMPOSER_VENDOR_DIR": "vendor",
   "WEBDIR": "web",
-  "PHP_VERSION": "{PHP_70_LATEST}",
+  "PHP_VERSION": "{PHP_71_LATEST}",
   "PHP_EXTENSIONS": [ "bz2", "zlib", "curl", "mcrypt", "gd", "pdo", "pdo_mysql", "mbstring"],
   "ADDITIONAL_PREPROCESS_CMDS": [
     "$HOME/bootstrap.sh"
