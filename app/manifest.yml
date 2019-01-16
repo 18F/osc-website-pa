@@ -9,8 +9,8 @@ applications:
   services:
     - d8ex-db
     - d8ex-s3
-    - drupal8-example-db
+    - drupal8-example-secrets
   env:
-    # Delete the next line to use the US standard 's3.amazonaws.com'
+    # Delete the next line to use the US standard 's3.amazonawsecrets
     AWS_S3_ENDPOINT: "s3-us-gov-west-1.amazonaws.com"
     HASH_SALT: a98haweo8hninq2345098n
