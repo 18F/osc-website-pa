@@ -42,6 +42,6 @@ bootstrap() {
 
 drush --root=$HOME/web core-status bootstrap | grep -q "Successful" || bootstrap
 
-drush --root=$HOME/web pm-info flysystem_s3 --fields=Status | grep -q enabled ||
-    drush --root=$HOME/web pm-enable --yes flysystem_s3
+drush --root=$HOME/web pm:info flysystem_s3 --fields=Status | grep -q enabled ||
+    drush --root=$HOME/web pm:enable --yes flysystem_s3
 
