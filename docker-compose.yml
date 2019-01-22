@@ -6,7 +6,9 @@ services:
       - database_data:/var/lib/mysql:delegated
     environment:
       MYSQL_ROOT_PASSWORD: mysql
-      MYSQL_DATABASE: mysql
+      MYSQL_DATABASE: dockerdb
+      MYSQL_USER: dockeruser
+      MYSQL_PASSWORD: dockerpass
   web:
     build: .docker
     ports:
@@ -22,11 +24,11 @@ services:
         { "aws-rds": [{
             "name": "database",
             "credentials": {
-              "db_name": "mysql",
+              "db_name": "dockerdb",
               "host": "database",
-              "password": "mysql",
+              "password": "dockerpass",
               "port": "3306",
-              "username": "root"
+              "username": "dockeruser"
             }
           }],
           "user-provided": [{

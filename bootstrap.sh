@@ -2,14 +2,14 @@
 set -euo pipefail
 
 fail() {
-  echo FAIL: $@
+  echo FAIL: "$@"
   exit 1
 }
 
 SECRETS=$(echo $VCAP_SERVICES | jq -r '.["user-provided"][] | select(.name == "secrets") | .credentials') ||
   fail "Unable to parse SECRETS from VCAP_SERVICES"
 APP_NAME=$(echo $VCAP_APPLICATION | jq -r '.name') ||
-  fail "Unable to parse SECRETS from VCAP_SERVICES"
+  fail "Unable to parse APP_NAME from VCAP_SERVICES"
 APP_ROOT=$(dirname "${BASH_SOURCE[0]}")
 
 S3_BUCKET=$(echo $VCAP_SERVICES | jq -r '.["s3"][] | select(.name == "storage") | .credentials.bucket') ||
