@@ -1,12 +1,22 @@
 #!/bin/bash 
 set -euo pipefail
 
-SECRETS=$(echo $VCAP_SERVICES | jq -r '.["user-provided"][] | select(.name == "secrets") | .credentials')
-APP_NAME=$(echo $VCAP_APPLICATION | jq -r '.name')
+fail() {
+  echo FAIL: "$@"
+  exit 1
+}
+
+SECRETS=$(echo $VCAP_SERVICES | jq -r '.["user-provided"][] | select(.name == "secrets") | .credentials') ||
+  fail "Unable to parse SECRETS from VCAP_SERVICES"
+APP_NAME=$(echo $VCAP_APPLICATION | jq -r '.name') ||
+  fail "Unable to parse APP_NAME from VCAP_SERVICES"
 APP_ROOT=$(dirname "${BASH_SOURCE[0]}")
 
-S3_BUCKET=$(echo $VCAP_SERVICES | jq -r '.["s3"][] | select(.name == "storage") | .credentials.bucket')
-S3_REGION=$(echo $VCAP_SERVICES | jq -r '.["s3"][] | select(.name == "storage") | .credentials.region')
+S3_BUCKET=$(echo $VCAP_SERVICES | jq -r '.["s3"][] | select(.name == "storage") | .credentials.bucket') ||
+  fail "Unable to parse S3_BUCKET from VCAP_SERVICES"
+S3_REGION=$(echo $VCAP_SERVICES | jq -r '.["s3"][] | select(.name == "storage") | .credentials.region') ||
+  fail "Unable to parse S3_REGION from VCAP_SERVICES"
+
 if [ -n "$S3_BUCKET" ] && [ -n "$S3_REGION" ]; then
   # Add Proxy rewrite rules to the top of the htaccess file
   sed -i "s/S3_BUCKET/$S3_BUCKET/g" $APP_ROOT/web/.htaccess

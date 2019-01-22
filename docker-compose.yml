@@ -6,7 +6,9 @@ services:
       - database_data:/var/lib/mysql:delegated
     environment:
       MYSQL_ROOT_PASSWORD: mysql
-      MYSQL_DATABASE: mysql
+      MYSQL_DATABASE: dockerdb
+      MYSQL_USER: dockeruser
+      MYSQL_PASSWORD: dockerpass
   web:
     build: .docker
     ports:
@@ -22,11 +24,11 @@ services:
         { "aws-rds": [{
             "name": "database",
             "credentials": {
-              "db_name": "mysql",
+              "db_name": "dockerdb",
               "host": "database",
-              "password": "mysql",
+              "password": "dockerpass",
               "port": "3306",
-              "username": "root"
+              "username": "dockeruser"
             }
           }],
           "user-provided": [{
@@ -38,7 +40,19 @@ services:
               "ROOT_USER_NAME": "root",
               "ROOT_USER_PASS": "root"
             }
-          }]
+          }],
+          "s3": [{
+            "name": "storage",
+            "credentials": {
+              "access_key_id": "ACCESSKEYID",
+              "bucket": "cg-bucket",
+              "region": "us-gov-west-1",
+              "secret_access_key": "secretaccesskey",
+              "uri": "s3://ACCESSKEYID:secretaccesskey@s3-us-gov-west-1.amazonaws.com/cg-bucket"
+            },
+            "label": "s3",
+            "plan": "basic-public"
+           }]
         }
     depends_on:
       - database
