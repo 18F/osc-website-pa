@@ -12,6 +12,9 @@ APP_NAME=$(echo $VCAP_APPLICATION | jq -r '.name') ||
   fail "Unable to parse APP_NAME from VCAP_SERVICES"
 APP_ROOT=$(dirname "${BASH_SOURCE[0]}")
 
+S3_FAKE=$(echo $VCAP_SERVICES | jq -r '.["s3"][] | select(.name == "storage") | .s3fake')
+[ "$S3_FAKE" != "null" ] && echo "Using fake S3"
+
 S3_BUCKET=$(echo $VCAP_SERVICES | jq -r '.["s3"][] | select(.name == "storage") | .credentials.bucket') ||
   fail "Unable to parse S3_BUCKET from VCAP_SERVICES"
 S3_REGION=$(echo $VCAP_SERVICES | jq -r '.["s3"][] | select(.name == "storage") | .credentials.region') ||

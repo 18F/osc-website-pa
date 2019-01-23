@@ -9,7 +9,6 @@ services:
       MYSQL_DATABASE: dockerdb
       MYSQL_USER: dockeruser
       MYSQL_PASSWORD: dockerpass
-
   storage:
     image: salsify/fakes3
     volumes:
@@ -17,14 +16,20 @@ services:
     ports:
       - 4554:80
     command:  >
-      bash -c "mkdir /var/data/fakes3/cg_bucket &&
+      sh -c "mkdir -p /var/data/fakes3/cg_bucket &&
       /opt/fakes3/bin/fakes3 -r /var/data/fakes3 -p 80"
+    networks:
+      aws_net:
+        ipv4_address: 172.24.0.12
   web:
     build: .docker
     ports:
       - 8080:80
     volumes:
       - .:/var/www/:delegated
+    extra_hosts:
+      - "s3-us-west-1.amazonaws.com:172.24.0.12"
+      - "cg_bucket.s3-us-west-1.amazonaws.com:172.24.0.12"
     command: "/var/www/.docker/startup"
     environment:
       CF_INSTANCE_INDEX: '0'
@@ -53,6 +58,7 @@ services:
           }],
           "s3": [{
             "name": "storage",
+            "s3fake": "true",
             "credentials": {
               "access_key_id": "ACCESS_KEY_ID",
               "bucket": "cg-bucket",
@@ -70,3 +76,11 @@ services:
 volumes:
   database_data:
   storage_data:
+networks:
+  aws_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 172.24.0.0/16
