@@ -28,8 +28,10 @@ services:
     volumes:
       - .:/var/www/:delegated
     extra_hosts:
+      - "s3.us-west-1.amazonaws.com:172.24.0.12"
       - "s3-us-west-1.amazonaws.com:172.24.0.12"
       - "cg_bucket.s3-us-west-1.amazonaws.com:172.24.0.12"
+      - "cg_bucket.s3.us-west-1.amazonaws.com:172.24.0.12"
     command: "/var/www/.docker/startup"
     environment:
       CF_INSTANCE_INDEX: '0'
@@ -61,10 +63,10 @@ services:
             "s3fake": "true",
             "credentials": {
               "access_key_id": "ACCESS_KEY_ID",
-              "bucket": "cg-bucket",
+              "bucket": "cg_bucket",
               "region": "us-west-1",
               "secret_access_key": "secret",
-              "uri": "s3://ACCESS_KEY_ID:secret@storage/cg-bucket"
+              "uri": "s3://ACCESS_KEY_ID:secret@storage/cg_bucket"
             },
             "label": "s3",
             "plan": "basic-public"
