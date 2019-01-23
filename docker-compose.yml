@@ -9,6 +9,16 @@ services:
       MYSQL_DATABASE: dockerdb
       MYSQL_USER: dockeruser
       MYSQL_PASSWORD: dockerpass
+
+  storage:
+    image: salsify/fakes3
+    volumes:
+      - storage_data:/var/data/fakes3:delegated
+    ports:
+      - 4554:80
+    command:  >
+      bash -c "mkdir /var/data/fakes3/cg_bucket &&
+      /opt/fakes3/bin/fakes3 -r /var/data/fakes3 -p 80"
   web:
     build: .docker
     ports:
@@ -44,11 +54,11 @@ services:
           "s3": [{
             "name": "storage",
             "credentials": {
-              "access_key_id": "ACCESSKEYID",
+              "access_key_id": "ACCESS_KEY_ID",
               "bucket": "cg-bucket",
-              "region": "us-gov-west-1",
-              "secret_access_key": "secretaccesskey",
-              "uri": "s3://ACCESSKEYID:secretaccesskey@s3-us-gov-west-1.amazonaws.com/cg-bucket"
+              "region": "us-west-1",
+              "secret_access_key": "secret",
+              "uri": "s3://ACCESS_KEY_ID:secret@storage/cg-bucket"
             },
             "label": "s3",
             "plan": "basic-public"
@@ -56,5 +66,7 @@ services:
         }
     depends_on:
       - database
+      - storage
 volumes:
   database_data:
+  storage_data:
