@@ -1,4 +1,4 @@
-uuid: 86058f99-d9d5-48a7-97c1-148493c95958
+uuid: b33e59c1-3494-4487-8e41-631830b54f32
 langcode: en
 status: true
 dependencies:
@@ -9,11 +9,11 @@ dependencies:
   theme:
     - uswds
 _core:
-  default_config_hash: h06zhb3xV9_2_3Zy9NsyylL7YBaEDlMwMEqNwAn8kMo
+  default_config_hash: kkISXE1LT2FJEoYnqCrCpeFB-2pmGmMxMklVk7rQcfg
 id: uswds_footer
 theme: uswds
-region: footer
-weight: -7
+region: footer_menu
+weight: 0
 provider: null
 plugin: 'system_menu_block:footer'
 settings:

@@ -1,4 +1,4 @@
-uuid: f1db358e-79c7-4521-b2be-b5d80b770f0a
+uuid: 327a3b93-1ce3-4222-bcb3-c468c8187cd5
 langcode: en
 status: true
 dependencies: {  }
@@ -6,20 +6,14 @@ _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated
 label: 'Authenticated user'
-weight: -9
+weight: 1
 is_admin: false
 permissions:
-  - 'access brightcove videos overview page'
-  - 'access brightcove_video_browser_widget entity browser pages'
   - 'access comments'
   - 'access content'
-  - 'access news feeds'
   - 'access shortcuts'
   - 'access site-wide contact form'
-  - 'access tour'
   - 'post comments'
+  - 'search content'
   - 'skip comment approval'
   - 'use text format basic_html'
-  - 'view own unpublished content'
-  - 'view published brightcove videos'
-  - 'view unpublished brightcove videos'

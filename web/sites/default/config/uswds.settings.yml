@@ -4,18 +4,17 @@ features:
   comment_user_verification: 1
   favicon: 1
 logo:
-  use_default: 0
-  path: ''
+  use_default: 1
 favicon:
   use_default: 1
-uswds_header_style: basic
+uswds_header_style: extended
 uswds_header_mega: 0
 uswds_search: 0
 uswds_government_banner: 1
-uswds_footer_style: slim
-uswds_footer_agency: 1
-uswds_footer_agency_name: 'National Science Foundation'
-uswds_footer_agency_url: nsf.gov
+uswds_footer_style: medium
+uswds_footer_agency: 0
+uswds_footer_agency_name: ''
+uswds_footer_agency_url: ''
 uswds_footer_agency_logo: ''
 uswds_contact_center: ''
 uswds_email: ''

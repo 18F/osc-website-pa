@@ -1,15 +1,15 @@
-uuid: b1f2662d-7626-466c-a09f-5e213b7ca51a
+uuid: 66bdbc5b-05f5-491b-a9cf-824a164f2d24
 langcode: en
 status: true
 dependencies:
   theme:
     - uswds
 _core:
-  default_config_hash: qHdtze2DZ2mFfaJadxjZz6epm92_SN9SAFY4yJGl8Fo
+  default_config_hash: X9I1OB0W3WlWtrK-CNcg6hNWwa8wficanpH8pYnDZDE
 id: uswds_local_tasks
 theme: uswds
-region: header
-weight: -7
+region: content
+weight: -40
 provider: null
 plugin: local_tasks_block
 settings:

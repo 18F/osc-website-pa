@@ -1,4 +1,4 @@
-uuid: ad0ed9b7-1543-41dd-8bdc-ef67326fd795
+uuid: 59305961-50fd-495f-8b63-3e030864a96a
 langcode: en
 status: true
 dependencies: {  }
@@ -6,12 +6,11 @@ _core:
   default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
 id: anonymous
 label: 'Anonymous user'
-weight: -10
+weight: 0
 is_admin: false
 permissions:
   - 'access comments'
   - 'access content'
-  - 'access news feeds'
   - 'access site-wide contact form'
+  - 'search content'
   - 'use text format restricted_html'
-  - 'view published brightcove videos'

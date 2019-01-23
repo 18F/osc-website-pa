@@ -1,4 +1,4 @@
-uuid: 39fc9ee2-53e1-42f9-b6b5-d745d51440cf
+uuid: 9cf0c997-3483-49f7-8a19-ba4ae4c5567c
 langcode: en
 status: true
 dependencies:
@@ -9,11 +9,11 @@ dependencies:
   theme:
     - uswds
 _core:
-  default_config_hash: f3Dd5TnUiFDjFZp9yEGJInwt6cUzs7O6SvLTFTATSlU
+  default_config_hash: NeHSoqm4XFqA7_0bDmR429ZZQt3LRbZMNRJTMsFyOfI
 id: uswds_tools
 theme: uswds
 region: sidebar_first
-weight: -5
+weight: 0
 provider: null
 plugin: 'system_menu_block:tools'
 settings:

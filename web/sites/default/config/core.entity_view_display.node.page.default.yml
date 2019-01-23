@@ -1,11 +1,13 @@
-uuid: 21a8b2df-ebad-4760-b6a5-60b1832b9dc0
+uuid: 7449f7e6-4c7a-4ec7-9f0f-bfcd6de9edc8
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.page.body
+    - field.field.node.page.field_hero
     - node.type.page
   module:
+    - entity_reference_revisions
     - text
     - user
 _core:
@@ -18,11 +20,22 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 100
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }
-  links:
-    weight: 101
+  field_hero:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
     region: content
+  links:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }

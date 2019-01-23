@@ -1,4 +1,4 @@
-uuid: cab66abf-2284-42ad-9675-e3d25f5a3b24
+uuid: 7fc961e9-03b4-402a-96cc-ba343622dc63
 langcode: en
 status: true
 dependencies:
@@ -7,11 +7,11 @@ dependencies:
   theme:
     - uswds
 _core:
-  default_config_hash: fNNLN48MSGSLiqwIFywCuxH2Dk_IxDbaP0kYhg_IPrg
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
 id: uswds_content
 theme: uswds
 region: content
-weight: -6
+weight: 0
 provider: null
 plugin: system_main_block
 settings:

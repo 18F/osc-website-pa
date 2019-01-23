@@ -1,4 +1,4 @@
-uuid: 32503eb7-4ab6-4c9c-b109-af2df0a87b2c
+uuid: 67a839b4-53d8-4fc3-ae53-7e0862e8a7d0
 langcode: en
 status: true
 dependencies:
@@ -19,8 +19,6 @@ settings:
           items:
             - Bold
             - Italic
-            - Subscript
-            - Superscript
         -
           name: Linking
           items:
@@ -36,7 +34,6 @@ settings:
           items:
             - Blockquote
             - DrupalImage
-            - brightcove_video
         -
           name: 'Block Formatting'
           items:
@@ -44,19 +41,15 @@ settings:
         -
           name: Tools
           items:
-            - PasteFromWord
-            - RemoveFormat
             - Source
   plugins:
     stylescombo:
       styles: ''
-    language:
-      language_list: un
 image_upload:
   status: true
   scheme: public
   directory: inline-images
   max_size: ''
   max_dimensions:
-    width: null
-    height: null
+    width: 0
+    height: 0
