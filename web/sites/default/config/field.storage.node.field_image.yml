@@ -1,16 +1,16 @@
-uuid: 0795b895-cdc4-46e3-a49b-18242abd2eb4
+uuid: 0b85b04b-6b22-4ab1-acd9-ec8b34df198a
 langcode: en
 status: true
 dependencies:
   module:
     - file
     - image
-    - user
+    - node
 _core:
-  default_config_hash: 6k-VBFilDLuzgSOT-77CFgHFlcd5D-kqRixtH89EShU
-id: user.user_picture
-field_name: user_picture
-entity_type: user
+  default_config_hash: SkXIPKZYiIMMtnBmfnxk58RYfbZ8cHSw5NZPY_JByME
+id: node.field_image
+field_name: field_image
+entity_type: node
 type: image
 settings:
   uri_scheme: public

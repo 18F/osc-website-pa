@@ -1,0 +1,20 @@
+uuid: 10ee4e3e-7da2-4a17-a1bb-f57045fe6c24
+langcode: en
+status: true
+dependencies:
+  theme:
+    - osc
+_core:
+  default_config_hash: 7rR9chwXvdM2H8OYMAYx9Zj3GGlPMrZp_M3ZA4thYTk
+id: osc_page_title
+theme: osc
+region: content
+weight: -3
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

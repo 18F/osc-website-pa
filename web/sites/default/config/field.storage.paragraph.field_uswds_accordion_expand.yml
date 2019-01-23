@@ -1,0 +1,20 @@
+uuid: f4840883-e844-4f5f-853c-14b0286e1f9c
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: C_UbA6gZHZ2FBuGsJAEMCejRV-ErmyNirkH0mbMHF6Q
+id: paragraph.field_uswds_accordion_expand
+field_name: field_uswds_accordion_expand
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

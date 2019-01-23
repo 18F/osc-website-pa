@@ -1,0 +1,22 @@
+uuid: c9db1141-a8b0-4166-bf16-ae32cdeca922
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - osc
+_core:
+  default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
+id: osc_messages
+theme: osc
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

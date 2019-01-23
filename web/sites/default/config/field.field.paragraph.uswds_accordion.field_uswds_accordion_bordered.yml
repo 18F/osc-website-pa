@@ -1,0 +1,25 @@
+uuid: 13aa81aa-42af-4a47-a503-8f54f136815e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uswds_accordion_bordered
+    - paragraphs.paragraphs_type.uswds_accordion
+_core:
+  default_config_hash: CcxbvITA5EScw5d5O60ngl2_FlvFW-DtEic9e6CMsc4
+id: paragraph.uswds_accordion.field_uswds_accordion_bordered
+field_name: field_uswds_accordion_bordered
+entity_type: paragraph
+bundle: uswds_accordion
+label: 'Add border around items'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

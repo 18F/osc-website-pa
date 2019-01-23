@@ -1,0 +1,22 @@
+uuid: f9cf7d7c-c0a9-45ce-b05a-3d96b70b628f
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - osc
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: osc_content
+theme: osc
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

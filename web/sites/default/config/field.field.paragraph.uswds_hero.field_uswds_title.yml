@@ -1,0 +1,21 @@
+uuid: f514d04f-d78c-40ab-b502-cc8a4ab2cdb2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_uswds_title
+    - paragraphs.paragraphs_type.uswds_hero
+_core:
+  default_config_hash: hmRRSLGRQGp6SbMxN9zF-nyMHN8pff3U6fDiqABNOKA
+id: paragraph.uswds_hero.field_uswds_title
+field_name: field_uswds_title
+entity_type: paragraph
+bundle: uswds_hero
+label: 'Hero callout title'
+description: 'If a title is provided, it will appear in this hero''s callout.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
