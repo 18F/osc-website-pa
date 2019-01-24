@@ -10,28 +10,51 @@ services:
       MYSQL_USER: dockeruser
       MYSQL_PASSWORD: dockerpass
   storage:
-    image: salsify/fakes3
-    volumes:
-      - storage_data:/var/data/fakes3:delegated
+    restart: always
+    networks:
+      default:
+        aliases:
+          - bor.minio
+    image: minio/minio:latest
     ports:
       - 4554:80
-    command:  >
-      sh -c "mkdir -p /var/data/fakes3/cg_bucket &&
-      /opt/fakes3/bin/fakes3 -r /var/data/fakes3 -p 80"
-    networks:
-      aws_net:
-        ipv4_address: 172.24.0.12
+    environment:
+      MINIO_DOMAIN: "s3-us-west-1.amazonaws.com"
+      MINIO_ACCESS_KEY: ACCESS_KEY_ID
+      MINIO_SECRET_KEY: secret123
+      MINIO_HTTP_TRACE: /dev/stdout
+    command: minio server --address 0.0.0.0:80 /var/data/fakes3
+    volumes:
+      - storage_data:/var/data/fakes3:delegated
+#  storage:
+#    build: .docker/storage
+#    image: salsify/fakes3
+#    volumes:
+#      - storage_data:/var/data/fakes3:delegated
+#    ports:
+#      - 4554:80
+#    command:  >
+#      sh -c "mkdir -p /var/data/fakes3/cg-bucket &&
+#      /opt/fakes3/bin/fakes3 -r /var/data/fakes3 -p 80"
+#    networks:
+#      aws_net:
+#        ipv4_address: 172.24.0.12
   web:
     build: .docker
     ports:
       - 8080:80
     volumes:
       - .:/var/www/:delegated
-    extra_hosts:
-      - "s3.us-west-1.amazonaws.com:172.24.0.12"
-      - "s3-us-west-1.amazonaws.com:172.24.0.12"
-      - "cg_bucket.s3-us-west-1.amazonaws.com:172.24.0.12"
-      - "cg_bucket.s3.us-west-1.amazonaws.com:172.24.0.12"
+    links:
+      - "storage:cg-bucket.s3.us-west-1.amazonaws.com"
+      - "storage:s3.us-west-1.amazonaws.com"
+      - "storage:cg-bucket.s3-us-west-1.amazonaws.com"
+      - "storage:s3-us-west-1.amazonaws.com"
+#    extra_hosts:
+#      - "s3.us-west-1.amazonaws.com:172.24.0.12"
+#      - "s3-us-west-1.amazonaws.com:172.24.0.12"
+#      - "cg-bucket.s3-us-west-1.amazonaws.com:172.24.0.12"
+#      - "cg-bucket.s3.us-west-1.amazonaws.com:172.24.0.12"
     command: "/var/www/.docker/startup"
     environment:
       CF_INSTANCE_INDEX: '0'
@@ -63,10 +86,10 @@ services:
             "s3fake": "true",
             "credentials": {
               "access_key_id": "ACCESS_KEY_ID",
-              "bucket": "cg_bucket",
+              "bucket": "cg-bucket",
               "region": "us-west-1",
-              "secret_access_key": "secret",
-              "uri": "s3://ACCESS_KEY_ID:secret@storage/cg_bucket"
+              "secret_access_key": "secret123",
+              "uri": "s3://ACCESS_KEY_ID:secret@storage/cg-bucket"
             },
             "label": "s3",
             "plan": "basic-public"
@@ -78,11 +101,11 @@ services:
 volumes:
   database_data:
   storage_data:
-networks:
-  aws_net:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-      -
-        subnet: 172.24.0.0/16
+#networks:
+#  aws_net:
+#    driver: bridge
+#    ipam:
+#      driver: default
+#      config:
+#      -
+#        subnet: 172.24.0.0/16

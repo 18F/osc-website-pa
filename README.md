@@ -621,12 +621,3 @@ buildpacks:
 We can also review cloud.gov's [release notes](https://cloud.gov/updates/) to
 see which buildpacks have been updated, though it's not as timely.
 
-### Working with S3
-
-Local development uses a mock S3 server, https://hub.docker.com/r/salsify/fakes3/dockerfile which
-is a tiny Ruby-based S3 like server.
-
-```
-docker-compose up storage
-aws --endpoint-url='http://localhost:4554' s3 mb s3://cg_bucket
-```
