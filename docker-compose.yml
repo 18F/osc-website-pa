@@ -14,7 +14,8 @@ services:
     networks:
       default:
         aliases:
-          - bor.minio
+          - cg-bucket.s3-us-west-1.amazonaws.com
+          - s3-us-west-1.amazonaws.com
     image: minio/minio:latest
     ports:
       - 4554:80
@@ -22,23 +23,21 @@ services:
       MINIO_DOMAIN: "s3-us-west-1.amazonaws.com"
       MINIO_ACCESS_KEY: ACCESS_KEY_ID
       MINIO_SECRET_KEY: secret123
-      MINIO_HTTP_TRACE: /dev/stdout
     command: minio server --address 0.0.0.0:80 /var/data/fakes3
     volumes:
       - storage_data:/var/data/fakes3:delegated
-#  storage:
-#    build: .docker/storage
-#    image: salsify/fakes3
-#    volumes:
-#      - storage_data:/var/data/fakes3:delegated
-#    ports:
-#      - 4554:80
-#    command:  >
-#      sh -c "mkdir -p /var/data/fakes3/cg-bucket &&
-#      /opt/fakes3/bin/fakes3 -r /var/data/fakes3 -p 80"
-#    networks:
-#      aws_net:
-#        ipv4_address: 172.24.0.12
+  bucketmaker:
+    image: minio/mc
+    environment:
+      MINIO_ACCESS_KEY: ACCESS_KEY_ID
+      MINIO_SECRET_KEY: secret123
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc  config host add storage http://storage ACCESS_KEY_ID secret123;
+      /usr/bin/mc mb storage/cg-bucket;
+      /usr/bin/mc policy download storage/cg-bucket/public"
+    depends_on:
+      - storage
   web:
     build: .docker
     ports:
@@ -50,11 +49,6 @@ services:
       - "storage:s3.us-west-1.amazonaws.com"
       - "storage:cg-bucket.s3-us-west-1.amazonaws.com"
       - "storage:s3-us-west-1.amazonaws.com"
-#    extra_hosts:
-#      - "s3.us-west-1.amazonaws.com:172.24.0.12"
-#      - "s3-us-west-1.amazonaws.com:172.24.0.12"
-#      - "cg-bucket.s3-us-west-1.amazonaws.com:172.24.0.12"
-#      - "cg-bucket.s3.us-west-1.amazonaws.com:172.24.0.12"
     command: "/var/www/.docker/startup"
     environment:
       CF_INSTANCE_INDEX: '0'
@@ -97,7 +91,7 @@ services:
         }
     depends_on:
       - database
-      - storage
+      - bucketmaker
 volumes:
   database_data:
   storage_data:
