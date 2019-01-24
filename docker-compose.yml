@@ -33,7 +33,7 @@ services:
       MINIO_SECRET_KEY: secret123
     entrypoint: >
       /bin/sh -c "
-      /usr/bin/mc  config host add storage http://storage ACCESS_KEY_ID secret123;
+      /usr/bin/mc config host add storage http://storage ACCESS_KEY_ID secret123;
       /usr/bin/mc mb storage/cg-bucket;
       /usr/bin/mc policy download storage/cg-bucket/public"
     depends_on:
@@ -44,11 +44,6 @@ services:
       - 8080:80
     volumes:
       - .:/var/www/:delegated
-    links:
-      - "storage:cg-bucket.s3.us-west-1.amazonaws.com"
-      - "storage:s3.us-west-1.amazonaws.com"
-      - "storage:cg-bucket.s3-us-west-1.amazonaws.com"
-      - "storage:s3-us-west-1.amazonaws.com"
     command: "/var/www/.docker/startup"
     environment:
       CF_INSTANCE_INDEX: '0'
@@ -95,11 +90,3 @@ services:
 volumes:
   database_data:
   storage_data:
-#networks:
-#  aws_net:
-#    driver: bridge
-#    ipam:
-#      driver: default
-#      config:
-#      -
-#        subnet: 172.24.0.0/16
