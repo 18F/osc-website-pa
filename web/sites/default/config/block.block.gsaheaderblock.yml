@@ -1,0 +1,25 @@
+uuid: f93dffb7-5866-429a-b26c-8ddf590ea7dc
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:23bec96c-88b2-41d9-b008-b461800028db'
+  module:
+    - block_content
+  theme:
+    - osc
+id: gsaheaderblock
+theme: osc
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:23bec96c-88b2-41d9-b008-b461800028db'
+settings:
+  id: 'block_content:23bec96c-88b2-41d9-b008-b461800028db'
+  label: 'GSA header block'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

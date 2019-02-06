@@ -14,12 +14,12 @@ uswds_search: 1
 uswds_government_banner: 1
 uswds_footer_style: big
 uswds_footer_agency: 1
-uswds_footer_agency_name: GSA
+uswds_footer_agency_name: 'U.S. General Services Administration'
 uswds_footer_agency_url: 'https://www.gsa.gov'
 uswds_footer_agency_logo: footer-logo.png
 uswds_contact_center: ''
 uswds_email: ''
-uswds_phone: 1-800-666-5555
+uswds_phone: ''
 uswds_facebook: 'https://www.facebook.com/gsa'
 uswds_twitter: 'https://twitter.com/usgsa'
 uswds_youtube: 'https://www.youtube.com/usgsa'
