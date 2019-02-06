@@ -1,0 +1,168 @@
+{
+    "_links": {
+        "self": {
+            "href": ""
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/uswds_media_block"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/uswds_media_block\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/uswds_media_block\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/uswds_media_block\/field_uswds_image": [
+            {
+                "href": "https:\/\/cg-5edd2b1d-0537-4f46-890c-d252a39bdbbe.s3.us-gov-west-1.amazonaws.com\/public\/media-blocks\/checkmark.png"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": 5
+        }
+    ],
+    "uuid": [
+        {
+            "value": "2d625d76-fc7c-4327-b865-59fe2f658d78"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": 8
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "uswds_media_block"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/uswds_media_block\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "e931493f-43bf-494d-bced-8eaaf16f4453"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/uswds_media_block\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "e931493f-43bf-494d-bced-8eaaf16f4453"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/uswds_media_block\/field_uswds_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "https:\/\/cg-5edd2b1d-0537-4f46-890c-d252a39bdbbe.s3.us-gov-west-1.amazonaws.com\/public\/media-blocks\/checkmark.png"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "b76b2e3e-545c-49a3-9f83-74fbb6232502"
+                    }
+                ],
+                "alt": "checkmark",
+                "title": "",
+                "width": "140",
+                "height": "142"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "2019-02-06T00:50:42+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "parent_id": [
+        {
+            "value": "3"
+        }
+    ],
+    "parent_type": [
+        {
+            "value": "paragraph"
+        }
+    ],
+    "parent_field_name": [
+        {
+            "value": "field_uswds_paragraphs"
+        }
+    ],
+    "behavior_settings": [
+        {
+            "value": "a:0:{}"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "field_uswds_body": [
+        {
+            "value": "<p>Learn about the process of responding to a solicitation and the things you'll need to do to remain on Schedule.<\/p>\r\n",
+            "format": "basic_html",
+            "processed": "<p>Learn about the process of responding to a solicitation and the things you'll need to do to remain on Schedule.<\/p>"
+        }
+    ],
+    "field_uswds_title": [
+        {
+            "value": "How do you apply for a contract?",
+            "lang": "en"
+        }
+    ]
+}
