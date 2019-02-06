@@ -1,0 +1,116 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/admin\/structure\/menu\/item\/23\/edit?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/menu_link_content\/menu_link_content"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/menu_link_content\/menu_link_content\/menu_link_content_parent_entity": [
+            {
+                "href": "http:\/\/default\/admin\/structure\/menu\/item\/14\/edit?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": 23
+        }
+    ],
+    "uuid": [
+        {
+            "value": "15e28b96-180c-4749-a2b0-797375209e70"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "bundle": [
+        {
+            "value": "menu_link_content"
+        }
+    ],
+    "title": [
+        {
+            "value": "Linking",
+            "lang": "en"
+        }
+    ],
+    "menu_name": [
+        {
+            "value": "osc-footer"
+        }
+    ],
+    "link": [
+        {
+            "uri": "https:\/\/www.gsa.gov\/website-information\/linking-policy",
+            "title": "",
+            "options": []
+        }
+    ],
+    "external": [
+        {
+            "value": false
+        }
+    ],
+    "rediscover": [
+        {
+            "value": false
+        }
+    ],
+    "weight": [
+        {
+            "value": -48
+        }
+    ],
+    "expanded": [
+        {
+            "value": false
+        }
+    ],
+    "enabled": [
+        {
+            "value": true
+        }
+    ],
+    "parent": [
+        {
+            "value": "menu_link_content:79669f27-c82e-4e87-bd08-f15d9679ad42"
+        }
+    ],
+    "changed": [
+        {
+            "value": "2019-02-05T23:54:13+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/menu_link_content\/menu_link_content\/menu_link_content_parent_entity": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/admin\/structure\/menu\/item\/14\/edit?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/menu_link_content\/menu_link_content"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "79669f27-c82e-4e87-bd08-f15d9679ad42"
+                    }
+                ]
+            }
+        ]
+    }
+}
