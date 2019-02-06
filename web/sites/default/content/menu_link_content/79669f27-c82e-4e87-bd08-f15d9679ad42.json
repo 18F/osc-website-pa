@@ -1,0 +1,87 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/admin\/structure\/menu\/item\/14\/edit?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/menu_link_content\/menu_link_content"
+        }
+    },
+    "id": [
+        {
+            "value": 14
+        }
+    ],
+    "uuid": [
+        {
+            "value": "79669f27-c82e-4e87-bd08-f15d9679ad42"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "bundle": [
+        {
+            "value": "menu_link_content"
+        }
+    ],
+    "title": [
+        {
+            "value": "Reference",
+            "lang": "en"
+        }
+    ],
+    "menu_name": [
+        {
+            "value": "osc-footer"
+        }
+    ],
+    "link": [
+        {
+            "uri": "internal:#",
+            "title": "",
+            "options": []
+        }
+    ],
+    "external": [
+        {
+            "value": false
+        }
+    ],
+    "rediscover": [
+        {
+            "value": true
+        }
+    ],
+    "weight": [
+        {
+            "value": -47
+        }
+    ],
+    "expanded": [
+        {
+            "value": true
+        }
+    ],
+    "enabled": [
+        {
+            "value": true
+        }
+    ],
+    "changed": [
+        {
+            "value": "2019-02-05T23:59:31+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ]
+}

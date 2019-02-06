@@ -1,0 +1,8 @@
+uuid: b4870256-58c0-4249-a0d9-088ef59b7ad8
+langcode: en
+status: true
+dependencies: {  }
+id: osc-footer
+label: 'Footer: OSC'
+description: 'Footer links'
+locked: false
