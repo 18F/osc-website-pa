@@ -1,6 +1,6 @@
 {
-    "name": "18f/cf-ex-drupal8",
-    "description": "A sample Drupal 8 site readily deployable to cloud.gov",
+    "name": "18f/osc-website-pa",
+    "description": "Path analysis prototyping for GSA OSC",
     "type": "project",
     "license": "GPL-2.0+",
     "authors": [
