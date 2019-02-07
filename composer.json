@@ -1,6 +1,6 @@
 {
-    "name": "18f/nsf",
-    "description": "The National Science Foundation's beta site",
+    "name": "18f/osc-website-pa",
+    "description": "Path analysis prototyping for GSA OSC",
     "type": "project",
     "license": "GPL-2.0+",
     "authors": [
