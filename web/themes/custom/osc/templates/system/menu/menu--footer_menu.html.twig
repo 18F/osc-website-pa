@@ -24,7 +24,7 @@
     {% for item in items %}
 
       {% if menu_level == 0 and 'big' == footer_style %}
-      <ul class="usa-unstyled-list usa-width-one-third usa-footer-primary-content">
+      <ul class="usa-unstyled-list usa-width-one-fourth usa-footer-primary-content">
         <li class="usa-footer-primary-link">
           <h4>{{ item.title }}</h4>
         </li>
@@ -42,7 +42,7 @@
         <a class="usa-footer-primary-link" href="{{ item.url }}">{{ item.title }}</a>
       </li>
       {% else %}
-      <li class="usa-width-one-third usa-footer-primary-content">
+      <li class="usa-width-one-fourth usa-footer-primary-content">
         <a class="usa-footer-primary-link" href="{{ item.url }}">{{ item.title }}</a>
       </li>
       {% endif %}
