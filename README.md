@@ -1,4 +1,33 @@
-# nsf
+# PDB Working example
+
+SETUP
+
+```
+bin/composer install
+```
+
+DOCKER
+
+```
+docker-compose up
+```
+
+CLOUD.GOV
+```
+cf create-user-provided-service secrets -p '{
+              "ADMIN_EMAIL": "secret@example.com",
+              "CRON_KEY": "SECRET",
+              "HASH_SALT": "SECRET",
+              "ROOT_USER_NAME": "root",
+              "ROOT_USER_PASS": "root"
+            }'
+cf create-service s3 basic-sandbox storage
+cf create-service aws-rds medium-mysql database
+cf push
+```
+
+
+
 This is the working repository for the NSF Site Redesign &amp; Content Discovery project. 
 
 ## Developing locally
