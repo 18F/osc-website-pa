@@ -1,0 +1,20 @@
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    'usa-width-one-third',
+    'usa-media_block',
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% block content %}
+      {{ content.field_uswds_image.0 }}
+      <div class="usa-media_block-body">
+        <h3>{{ paragraph.field_uswds_title.value }}</h3>
+        {{ content.field_uswds_body.0 }}
+      </div>
+    {% endblock %}
+  </div>
+{% endblock paragraph %}

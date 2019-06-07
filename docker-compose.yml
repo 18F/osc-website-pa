@@ -1,23 +1,46 @@
-version: '3'
+version: '3.0'
 services:
-  db:
-    image: mariadb:10.2
+  database:
+    image: mysql:5.7
+    volumes:
+      - database_data:/var/lib/mysql:delegated
     environment:
-      MYSQL_DATABASE: drupal
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: mysql
-      MYSQL_PASSWORD: mysql
-    volumes:
-      - db_data:/var/lib/mysql
-    restart: always
-  drupal:
-    depends_on:
-      - db
-    build: .
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: mysql
+  web:
+    build: .docker
     ports:
-      - "8080:80"
+      - 8080:80
     volumes:
-      - ./app:/app
-    restart: always
+      - .:/var/www/:delegated
+    command: "/var/www/.docker/startup"
+    environment:
+      CF_INSTANCE_INDEX: '0'
+      VCAP_APPLICATION: >
+        {"name": "web"}
+      VCAP_SERVICES: >
+        { "aws-rds": [{
+            "name": "database",
+            "credentials": {
+              "db_name": "mysql",
+              "host": "database",
+              "password": "mysql",
+              "port": "3306",
+              "username": "root"
+            }
+          }],
+          "user-provided": [{
+            "name": "secrets",
+            "credentials": {
+              "ADMIN_EMAIL": "secret@example.com",
+              "CRON_KEY": "SECRET",
+              "HASH_SALT": "SECRET",
+              "ROOT_USER_NAME": "root",
+              "ROOT_USER_PASS": "root"
+            }
+          }]
+        }
+    depends_on:
+      - database
 volumes:
-  db_data:
+  database_data:

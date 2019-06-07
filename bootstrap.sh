@@ -1,38 +1,58 @@
 #!/bin/bash 
-set -euxo pipefail
+set -euo pipefail
 
-: ${ACCOUNT_NAME?} ${ACCOUNT_PASS?}
+SECRETS=$(echo $VCAP_SERVICES | jq -r '.["user-provided"][] | select(.name == "secrets") | .credentials')
+APP_NAME=$(echo $VCAP_APPLICATION | jq -r '.name')
+APP_ROOT=$(dirname "${BASH_SOURCE[0]}")
 
-fail() {
-    echo FAIL $@
-    exit 1
+S3_BUCKET=$(echo $VCAP_SERVICES | jq -r '.["s3"][] | select(.name == "storage") | .credentials.bucket')
+S3_REGION=$(echo $VCAP_SERVICES | jq -r '.["s3"][] | select(.name == "storage") | .credentials.region')
+if [ -n "$S3_BUCKET" ] && [ -n "$S3_REGION" ]; then
+  # Add Proxy rewrite rules to the top of the htaccess file
+  sed -i "s/S3_BUCKET/$S3_BUCKET/g" $APP_ROOT/web/.htaccess
+  sed -i "s/S3_REGION/$S3_REGION/g" $APP_ROOT/web/.htaccess
+fi
+
+install_drupal() {
+    ROOT_USER_NAME=$(echo $SECRETS | jq -r '.ROOT_USER_NAME')
+    ROOT_USER_PASS=$(echo $SECRETS | jq -r '.ROOT_USER_PASS')
+
+    : "${ROOT_USER_NAME:?Need and root user name for Drupal}"
+    : "${ROOT_USER_PASS:?Need and root user pass for Drupal}"
+
+    drupal site:install \
+        --root=$APP_ROOT/web \
+        --no-interaction \
+        --account-name="$ROOT_USER_NAME" \
+        --account-pass="$ROOT_USER_PASS" \
+        --langcode="en"
+    # Delete some data created in the "standard" install profile
+    # See https://www.drupal.org/project/drupal/issues/2583113
+    drupal --root=$APP_ROOT/web entity:delete shortcut_set default --no-interaction
+    drupal --root=$APP_ROOT/web config:delete active field.field.node.article.body --no-interaction
+    # Set site uuid to match our config
+    UUID=$(grep uuid $APP_ROOT/web/sites/default/config/system.site.yml | cut -d' ' -f2)
+    drupal --root=$APP_ROOT/web config:override system.site uuid $UUID
 }
 
-bootstrap() {
-    creds=$(echo $VCAP_SERVICES | jq -r '.["aws-rds"][0].credentials')
-    [ $creds = "null" ] && fail "creds are null; need to bind database?"
+if [ "${CF_INSTANCE_INDEX:-''}" == "0" ] && [ "${APP_NAME}" == "web" ]; then
+  drupal --root=$APP_ROOT/web list | grep database > /dev/null || install_drupal
+  # Mild data migration: fully delete database entries related to these
+  # modules. These plugins (and the dependencies) can be removed once they've
+  # been uninstalled in all environments
 
-    db_type=mysql
-    db_user=$(echo $creds | jq -r '.username')
-    db_pass=$(echo $creds | jq -r '.password')
-    db_port=$(echo $creds | jq -r '.port')
-    db_host=$(echo $creds | jq -r '.host')
-    db_name=$(echo $creds | jq -r '.db_name')
+  # Sync configs from code
+  drupal --root=$APP_ROOT/web config:import
 
-    drupal site:install standard --root=$HOME/web --no-interaction \
-        --account-name=${ACCOUNT_NAME:-$(gen_cred ACCOUNT_NAME)} \
-        --account-pass=${ACCOUNT_PASS:-$(gen_cred ACCOUNT_PASS)} \
-        --langcode="en" \
-        --db-type=$db_type \
-        --db-user=$db_user \
-        --db-pass=$db_pass \
-        --db-port=$db_port \
-        --db-host=$db_host \
-        --db-name=$db_name 
-}
+  # Secrets
+  ADMIN_EMAIL=$(echo $SECRETS | jq -r '.ADMIN_EMAIL')
+  CRON_KEY=$(echo $SECRETS | jq -r '.CRON_KEY')
+  drupal --root=$APP_ROOT/web config:override system.site mail $ADMIN_EMAIL > /dev/null
+  drupal --root=$APP_ROOT/web config:override update.settings notification.emails.0 $ADMIN_EMAIL > /dev/null
 
-drush --root=$HOME/web core-status bootstrap | grep -q "Successful" || bootstrap
+  # Import initial content
+  drush --root=$APP_ROOT/web default-content-deploy:import --no-interaction
 
-drush --root=$HOME/web pm-info flysystem_s3 --fields=Status | grep -q enabled ||
-    drush --root=$HOME/web pm-enable --yes flysystem_s3
-
+  # Clear the cache
+  drupal --root=$APP_ROOT/web cache:rebuild --no-interaction
+fi
