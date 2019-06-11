@@ -222,7 +222,7 @@ docker-compose down # stop any running instance
 docker-compose up # start a new one with our code
 ```
 
-Then navigate to [http://localhost:8080](http://localhost:8080) and log in as
+Then navigate to [http://localhost:8080](http://localhost:8080/user/login) and log in as
 the root/root. Modify whatever settings desired, which will modify them in
 your local database. We'll next need to export those configurations to the
 file system:
