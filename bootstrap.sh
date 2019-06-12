@@ -43,7 +43,7 @@ install_drupal() {
 
 if [ "${CF_INSTANCE_INDEX:-''}" == "0" ] && [ "${APP_NAME}" == "web" ]; then
   # make sure database is created
-  echo "create database $DB_NAME;" | mysql --host="$DB_HOST" --port="$DB_PORT" --user="$DB_USER" --password="$DB_PW"
+  echo "create database $DB_NAME;" | mysql --host="$DB_HOST" --port="$DB_PORT" --user="$DB_USER" --password="$DB_PW" || true
 
   drupal --root=$APP_ROOT/web list | grep database > /dev/null || install_drupal
   # Mild data migration: fully delete database entries related to these
