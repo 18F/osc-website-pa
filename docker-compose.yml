@@ -20,7 +20,7 @@ services:
         {"name": "osc-web", "application_id": "docker"}
       VCAP_SERVICES: >
         { "aws-rds": [{
-            "name": "database",
+            "name": "osc-database",
             "credentials": {
               "db_name": "drupal",
               "host": "database",

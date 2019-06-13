@@ -7,14 +7,14 @@ default_config: &defaults
   disk_quota: 512M
   timeout: 180
   services:
-    - osc-database # cf create-service aws-rds medium-mysql database
-    - osc-secrets  # cf create-user-provided-service secrets -p '{
+    - osc-database # cf create-service aws-rds medium-mysql osc-database
+    - osc-secrets  # cf create-user-provided-service osc-secrets -p '{
                # "CRON_KEY": ...
                # "HASH_SALT": ...
                # "ROOT_USER_NAME": ...,
                # "ROOT_USER_PASS": ...,
                # }'
-    - osc-storage  # cf create-service s3 basic-sandbox storage
+    - osc-storage  # cf create-service s3 basic-sandbox osc-storage
 
 applications:
 - name: osc-web

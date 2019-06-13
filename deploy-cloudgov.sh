@@ -4,18 +4,29 @@
 # and then launch everything.
 #
 
+# this function will generate a random string, or bail if uuidgen is not available.
+generate_string()
+{
+  if [ -z "$1" ] ; then
+    if command -v uuidgen >/dev/null ; then
+      NEW_STRING=$(uuidgen)
+      export NEW_STRING
+    else
+      echo "cannot find uuidgen utility:  You will need to generate some random strings and put them in the CRON_KEY, HASH_SALT, and ROOT_USER_PASS environment variables, then re-run this script."
+      exit 1
+    fi
+  fi
+}
+
 # If the user does not supply required data, generate some secrets.
-# This works on OS X.  You may need to generate some random strings
-# by hand if your distribution does not have the uuidgen utility on
-# it.
-NEW_CRON_KEY=$(uuidgen)
-CRON_KEY=${CRON_KEY:-$NEW_CRON_KEY}
+generate_string "$CRON_KEY"
+CRON_KEY=${CRON_KEY:-$NEW_STRING}
 
-NEW_HASH_SALT=$(uuidgen)
-HASH_SALT=${HASH_SALT:-$NEW_HASH_SALT}
+generate_string "$HASH_SALT"
+HASH_SALT=${HASH_SALT:-$NEW_STRING}
 
-NEW_ROOT_USER_PASS=$(uuidgen)
-ROOT_USER_PASS=${ROOT_USER_PASS:-$NEW_ROOT_USER_PASS}
+generate_string "$ROOT_USER_PASS"
+ROOT_USER_PASS=${ROOT_USER_PASS:-$NEW_STRING}
 
 ROOT_USER_NAME=${ROOT_USER_NAME:-root}
 
@@ -48,7 +59,7 @@ fi
 # wait until the db is fully provisioned
 until cf create-service-key osc-database test-osc-db-ok ; do
 	echo waiting until osc-database is live...
-	sleep 10
+	sleep 20
 done
 cf delete-service-key osc-database test-osc-db-ok -f
 
@@ -61,4 +72,4 @@ ROUTE=$(cf apps | grep osc-web | awk '{print $6}')
 echo "to log into the osc-drupal site, you will want to go to https://${ROUTE}/user/login and use"
 echo "USERNAME:  ${ROOT_USER_NAME}"
 echo "PASSWORD:  ${ROOT_USER_PASS}"
-echo "to get in.  Have fun!"
+echo "  to get in.  Have fun!"
