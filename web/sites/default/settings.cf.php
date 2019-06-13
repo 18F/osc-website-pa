@@ -8,7 +8,7 @@ $cf_service_data = json_decode($_ENV['VCAP_SERVICES'] ?? '{}', true);
 
 foreach ($cf_service_data as $service_provider => $service_list) {
   foreach ($service_list as $service) {
-    if ($service['name'] === 'database') {
+    if ($service['name'] === 'osc-database') {
       $databases['default']['default'] = array (
         'database' => $service['credentials']['db_name'],
         'username' => $service['credentials']['username'],
@@ -20,10 +20,10 @@ foreach ($cf_service_data as $service_provider => $service_list) {
         'driver' => 'mysql',
       );
     }
-    if ($service['name'] === 'secrets') {
+    if ($service['name'] === 'osc-secrets') {
       $settings['hash_salt'] = $service['credentials']['HASH_SALT'];
     }
-    if ($service['name'] === 'storage') {
+    if ($service['name'] === 'osc-storage') {
       $config['s3fs.settings']['access_key'] = $service['credentials']['access_key_id'];
       $config['s3fs.settings']['bucket'] = $service['credentials']['bucket'];
       $config['s3fs.settings']['encryption'] = 'AES256';

@@ -17,7 +17,7 @@ services:
     environment:
       CF_INSTANCE_INDEX: '0'
       VCAP_APPLICATION: >
-        {"name": "web"}
+        {"name": "osc-web", "application_id": "docker"}
       VCAP_SERVICES: >
         { "aws-rds": [{
             "name": "database",
@@ -30,7 +30,7 @@ services:
             }
           }],
           "s3": [{
-            "name": "storage",
+            "name": "osc-storage",
             "credentials": {
              "access_key_id": "XXX",
              "bucket": "XXX",
@@ -39,7 +39,7 @@ services:
             }
           }],
           "user-provided": [{
-            "name": "secrets",
+            "name": "osc-secrets",
             "credentials": {
               "ADMIN_EMAIL": "secret@example.com",
               "CRON_KEY": "SECRET",

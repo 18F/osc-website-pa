@@ -1,8 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
-SECRETS=$(echo $VCAP_SERVICES | jq -r '.["user-provided"][] | select(.name == "secrets") | .credentials')
+SECRETS=$(echo $VCAP_SERVICES | jq -r '.["user-provided"][] | select(.name == "osc-secrets") | .credentials')
 APP_NAME=$(echo $VCAP_APPLICATION | jq -r '.name')
+APP_ID=$(echo "$VCAP_APPLICATION" | jq -r '.application_id')
 APP_ROOT=$(dirname "${BASH_SOURCE[0]}")
 
 DB_NAME=$(echo $VCAP_SERVICES | jq -r '.["aws-rds"][] | .credentials.db_name')
@@ -11,8 +12,8 @@ DB_PW=$(echo $VCAP_SERVICES | jq -r '.["aws-rds"][] | .credentials.password')
 DB_HOST=$(echo $VCAP_SERVICES | jq -r '.["aws-rds"][] | .credentials.host')
 DB_PORT=$(echo $VCAP_SERVICES | jq -r '.["aws-rds"][] | .credentials.port')
 
-S3_BUCKET=$(echo $VCAP_SERVICES | jq -r '.["s3"][] | select(.name == "storage") | .credentials.bucket')
-S3_REGION=$(echo $VCAP_SERVICES | jq -r '.["s3"][] | select(.name == "storage") | .credentials.region')
+S3_BUCKET=$(echo $VCAP_SERVICES | jq -r '.["s3"][] | select(.name == "osc-storage") | .credentials.bucket')
+S3_REGION=$(echo $VCAP_SERVICES | jq -r '.["s3"][] | select(.name == "osc-storage") | .credentials.region')
 if [ -n "$S3_BUCKET" ] && [ -n "$S3_REGION" ]; then
   # Add Proxy rewrite rules to the top of the htaccess file
   sed -i "s/S3_BUCKET/$S3_BUCKET/g" $APP_ROOT/web/.htaccess
@@ -41,9 +42,11 @@ install_drupal() {
     drupal --root=$APP_ROOT/web config:override system.site uuid $UUID
 }
 
-if [ "${CF_INSTANCE_INDEX:-''}" == "0" ] && [ "${APP_NAME}" == "web" ]; then
-  # make sure database is created
-  echo "create database $DB_NAME;" | mysql --host="$DB_HOST" --port="$DB_PORT" --user="$DB_USER" --password="$DB_PW" || true
+if [ "${CF_INSTANCE_INDEX:-''}" == "0" ] && [ "${APP_NAME}" == "osc-web" ]; then
+  if [ "$APP_ID" = "docker" ] ; then
+    # make sure database is created
+    echo "create database $DB_NAME;" | mysql --host="$DB_HOST" --port="$DB_PORT" --user="$DB_USER" --password="$DB_PW" || true
+  fi
 
   drupal --root=$APP_ROOT/web list | grep database > /dev/null || install_drupal
   # Mild data migration: fully delete database entries related to these
