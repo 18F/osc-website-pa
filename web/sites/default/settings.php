@@ -776,10 +776,10 @@ $settings['default_content_deploy_content_directory'] = './sites/default/content
 $settings['install_profile'] = 'standard';
 
 // Handle cloud.gov and docker-compose file location differences
-if file_exists($app_root . '/' . $site_path . '/settings.cf.php') {
+if (file_exists($app_root . '/' . $site_path . '/settings.cf.php')) {
   include $app_root . '/' . $site_path . '/settings.cf.php';
 }
-if file_exists('./sites/default/settings.cf.php') {
+if (file_exists('./sites/default/settings.cf.php')) {
   include './sites/default/settings.cf.php';
 }
 
