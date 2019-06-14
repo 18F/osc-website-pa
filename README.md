@@ -388,12 +388,12 @@ clearing away all the database files.
 We prefer deploying code through a continuous integration system. This ensures
 reproducibility and allows us to add additional safeguards. Regardless of
 environment, however, our steps for deploying code are more or less the same:
-1. Install the `cf` executable and `autopilot` plugin (this can be done once)
+1. Install the `cf` executable (this can be done once)
 1. Clone a *fresh* copy of the repository (this must be done every time)
 1. Log into cloud.gov and target the appropriate environment
 1. Send our new code up to cloud.gov for deployment
 
-### Install cf/autopilot
+### Install cf
 
 Follow the Cloud Foundry
 [instructions](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html) for
@@ -428,6 +428,17 @@ We'll also want to **c**hange our **d**irectory to be inside the repository.
 cd osc-website-pa
 ```
 
+### Send our new code up to cloud.gov
+
+An easy way to do this is to run the `deploy-cloudgov.sh` script.
+It should create the services you need (if they are not already created),
+wait until the services are up, and then launch the app and tell you
+what URL you should go to.
+
+As a part of this process, some secrets are generated, like the initial
+root password.  If you want, you can override this by saying:
+`export ROOT_USER_PASS=yourreallygr3atpassw0rd.` and then running the
+`deploy-cloudgov.sh` script.
 
 ## Notes on cloud.gov
 
