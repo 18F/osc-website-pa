@@ -29,15 +29,6 @@ services:
               "username": "root"
             }
           }],
-          "s3": [{
-            "name": "osc-storage",
-            "credentials": {
-             "access_key_id": "XXX",
-             "bucket": "XXX",
-             "region": "XXX",
-             "secret_access_key": "XXX"
-            }
-          }],
           "user-provided": [{
             "name": "osc-secrets",
             "credentials": {

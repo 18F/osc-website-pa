@@ -12,14 +12,6 @@ DB_PW=$(echo $VCAP_SERVICES | jq -r '.["aws-rds"][] | .credentials.password')
 DB_HOST=$(echo $VCAP_SERVICES | jq -r '.["aws-rds"][] | .credentials.host')
 DB_PORT=$(echo $VCAP_SERVICES | jq -r '.["aws-rds"][] | .credentials.port')
 
-S3_BUCKET=$(echo $VCAP_SERVICES | jq -r '.["s3"][] | select(.name == "osc-storage") | .credentials.bucket')
-S3_REGION=$(echo $VCAP_SERVICES | jq -r '.["s3"][] | select(.name == "osc-storage") | .credentials.region')
-if [ -n "$S3_BUCKET" ] && [ -n "$S3_REGION" ]; then
-  # Add Proxy rewrite rules to the top of the htaccess file
-  sed -i "s/S3_BUCKET/$S3_BUCKET/g" $APP_ROOT/web/.htaccess
-  sed -i "s/S3_REGION/$S3_REGION/g" $APP_ROOT/web/.htaccess
-fi
-
 install_drupal() {
     ROOT_USER_NAME=$(echo $SECRETS | jq -r '.ROOT_USER_NAME')
     ROOT_USER_PASS=$(echo $SECRETS | jq -r '.ROOT_USER_PASS')
