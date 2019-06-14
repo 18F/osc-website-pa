@@ -150,7 +150,7 @@ something similar to the following above "user-provided":
 
 ```json
 "s3": [{
-  "name": "storage",
+  "name": "osc-storage",
   "credentials": {
    "access_key_id": "SECRET",
    "bucket": "SECRET",
@@ -162,7 +162,7 @@ something similar to the following above "user-provided":
 
 To find the values we're using in cloud.gov, use
 ```
-cf env web
+cf env osc-web
 ```
 
 As with other edits to the local secrets, extra care should be taken when
@@ -383,7 +383,7 @@ Generally, `down` spins down the running environment but doesn't delete any
 data. The `-v` flag, however, tells Docker to delete our data "volumes",
 clearing away all the database files.
 
-## Deploying code
+## Deploying code to cloud.gov
 
 We prefer deploying code through a continuous integration system. This ensures
 reproducibility and allows us to add additional safeguards. Regardless of
@@ -399,28 +399,6 @@ Follow the Cloud Foundry
 [instructions](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html) for
 installing the `cf` executable. This command-line interface is our primary
 mechanism for interacting with cloud.gov.
-
-Though it's not required, it's also a good idea to install the `autopilot`
-plugin, which lets us deploy without downtime. `cf` will allow us to spin down
-our old code and spin up new code in its place, which implies some downtime.
-The `autopilot` plugin [goes
-further](https://github.com/contraband/autopilot#method) by letting us spin up
-a _second_ set of instances prior to deleting the old. Installation involves
-downloading the latest version of the plugin, ensuring that binary is
-executable, and telling `cf` about it. Below we have commands for a Linux
-environment, but OSX and Windows would be similar:
-
-```sh
-# Get the binary
-wget "https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux"
-# Make it executable
-chmod a+x autopilot-linux
-# Tell cf it exists
-cf install-plugin autopilot-linux
-```
-
-If performing a deployment manually (outside of CI), note that you'll only
-need to install these executables once for use with all future deployments.
 
 ### Clone a fresh copy of the repo
 
@@ -469,19 +447,19 @@ We'll assume you're already logged into cloud.gov. From there,
 cf apps
 ```
 will give a broad overview of the current application instances. We expect two
-"web" instances and one "cronish" worker in our environments, as described in
+"osc-web" instances and one "osc-cronish" worker in our environments, as described in
 our manifest files.
 
 ```
-cf app web
+cf app osc-web
 ```
 will give us more detail about the "web" instances, specifically CPU, disk,
 and memory usage.
 
 ```
-cf logs web
+cf logs osc-web
 ```
-will let us attach to the emitted apache logs of our running "web" instances.
+will let us attach to the emitted apache logs of our running "osc-web" instances.
 If we add the `--recent` flag, we'll instead get output from our *recent* log
 history (and not see new logs as they come in). We can use these logs to debug
 500 errors. Be sure to look at cloud.gov's [logging
@@ -494,13 +472,13 @@ cloud.gov [docs on the topic](https://cloud.gov/docs/apps/using-ssh/) for more
 detail -- be sure to read the step about setting up the ssh environment.
 
 ```
-cf ssh web
+cf ssh osc-web
 ```
 
 While the database isn't generally accessible outside the app's network, we
 can access it by setting up an SSH tunnel, as described in the
 [cf-service-connect](https://github.com/18F/cf-service-connect#readme) plugin.
-Note that the `web` and `cronish` instances don't have a `mysql` client (aside
+Note that the `osc-web` and `osc-cronish` instances don't have a `mysql` client (aside
 from PHP's PDO); sshing into them likely won't help.
 
 Of course, there are many more useful commands. Explore the cloud.gov [user
@@ -517,15 +495,15 @@ the same) at once.
 To grab the previous versions of these values, we can run
 
 ```
-cf env web
+cf env osc-web
 ```
 
-and look in the results for the credentials of our "secrets" service (it'll be
-part of the `VCAP_SERVICES` section). Then, we update our `secrets` service
+and look in the results for the credentials of our "osc-secrets" service (it'll be
+part of the `VCAP_SERVICES` section). Then, we update our `osc-secrets` service
 like so:
 
 ```
-cf update-user-provided-service secrets -p '{"SAMPLE_ACCOUNT":"Some Value", "SAMPLE_CLIENT":"Another value", ...}'
+cf update-user-provided-service osc-secrets -p '{"SAMPLE_ACCOUNT":"Some Value", "SAMPLE_CLIENT":"Another value", ...}'
 ```
 
 ### Updating PHP
