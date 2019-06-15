@@ -56,6 +56,9 @@ else
   cf create-service s3 basic-sandbox osc-storage
 fi
 
+# create this to figure out where to set the s3 stuff
+cf create-service-key osc-storage storagekey
+
 # wait until the db is fully provisioned
 until cf create-service-key osc-database test-osc-db-ok ; do
 	echo waiting until osc-database is live...
@@ -65,6 +68,16 @@ cf delete-service-key osc-database test-osc-db-ok -f
 
 # launch the apps
 cf push
+
+# make sure that the app knows where it's s3fs stuff lives
+S3INFO=$(cf service-key osc-storage storagekey)
+S3_BUCKET=$(echo "$S3INFO" | grep '"bucket":' | sed 's/.*"bucket": "\(.*\)",/\1/')
+S3_REGION=$(echo "$S3INFO" | grep '"region":' | sed 's/.*"region": "\(.*\)",/\1/')
+cf set-env osc-web S3_BUCKET "$S3_BUCKET"
+cf set-env osc-web S3_REGION "$S3_REGION"
+cf delete-service-key osc-storage storagekey -f
+# This is a bit heavyweight, but it is the only way to get the environment variables to take effect.
+cf restage osc-web
 
 # tell people where to go
 ROUTE=$(cf apps | grep osc-web | awk '{print $6}')
