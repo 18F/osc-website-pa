@@ -82,7 +82,9 @@ cf restage osc-web
 # tell people where to go
 ROUTE=$(cf apps | grep osc-web | awk '{print $6}')
 
-echo "to log into the osc-drupal site, you will want to go to https://${ROUTE}/user/login and use"
+echo
+echo
+echo "  to log into the osc-drupal site, you will want to go to https://${ROUTE}/user/login and use"
 echo "USERNAME:  ${ROOT_USER_NAME}"
 echo "PASSWORD:  ${ROOT_USER_PASS}"
 echo "  to get in.  Have fun!"
