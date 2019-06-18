@@ -31,3 +31,5 @@
 # Ignore twig storage dir
 /storage/
 
+# Ignore the generated .htaccess file
+/web/.htaccess

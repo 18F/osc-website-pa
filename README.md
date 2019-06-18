@@ -143,7 +143,9 @@ to port to other environments.
 
 ### File storage
 
-By default, we don't use S3 when running Drupal locally. If wanting to
+By default, we don't use S3 when running Drupal locally.
+
+We don't recommend this, but if you need to
 simulate the S3 environment, we need to add our credentials into the
 `VCAP_SERVICES` environment variable. Edit `docker-compose.yml` and insert
 something similar to the following above "user-provided":
@@ -159,15 +161,22 @@ something similar to the following above "user-provided":
   }
 }],
 ```
+And also add
+```
+      S3_BUCKET: 'SECRET'
+      S3_REGION: 'SECRET'
+```
+under the `environment:` line.
 
 To find the values we're using in cloud.gov, use
 ```
 cf env osc-web
 ```
 
-As with other edits to the local secrets, extra care should be taken when
-exporting your config, lest those configuration files contain the true secret
-values rather than dummy "SECRET" strings.
+**As with other edits to the local secrets, extra care should be taken when
+exporting your config and checking this data into git, lest those
+configuration files contain the true secret values rather than dummy
+"SECRET" strings.**
 
 ### Configuration workflow
 

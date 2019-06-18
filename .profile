@@ -5,7 +5,9 @@
 if [ -f /app/web/.htaccess ] ; then
   if [ -n "$S3_BUCKET" ] && [ -n "$S3_REGION" ]; then
     # Add Proxy rewrite rules to the top of the htaccess file
-    sed -i "s/^#RewriteRule .s3fs/RewriteRule ^s3fs/" /app/web/.htaccess
+    sed "s/^#RewriteRule .s3fs/RewriteRule ^s3fs/" /app/web/template-.htaccess > /app/web/.htaccess
+  else
+    cp /app/web/template-.htaccess /app/web/.htaccess
   fi
 else
   echo "cannot find .htaccess!"
