@@ -297,7 +297,7 @@ $config_directories = array();
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = 'sA51ewzJYcoqJ2YPKNHVvjD43fCZAgJfcEuilLEBpfHKHgy2ZACgSfccbW_cRgH9orAVtjioZg';
+$settings['hash_salt'] = '';
 
 /**
  * Deployment identifier.
@@ -771,18 +771,6 @@ $settings['file_scan_ignore_directories'] = [
  */
 $settings['entity_update_batch_size'] = 50;
 
-$config_directories['sync'] = './sites/default/config/';
-$settings['default_content_deploy_content_directory'] = './sites/default/content';
-$settings['install_profile'] = 'standard';
-
-// Handle cloud.gov and docker-compose file location differences
-if (file_exists($app_root . '/' . $site_path . '/settings.cf.php')) {
-  include $app_root . '/' . $site_path . '/settings.cf.php';
-}
-if (file_exists('./sites/default/settings.cf.php')) {
-  include './sites/default/settings.cf.php';
-}
-
 /**
  * Load local development override configuration, if available.
  *
@@ -793,6 +781,7 @@ if (file_exists('./sites/default/settings.cf.php')) {
  *
  * Keep this code block at the end of this file to take full effect.
  */
-if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
-  include $app_root . '/' . $site_path . '/settings.local.php';
-}
+#
+# if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+#   include $app_root . '/' . $site_path . '/settings.local.php';
+# }

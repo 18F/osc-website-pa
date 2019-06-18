@@ -17,12 +17,12 @@ services:
     environment:
       CF_INSTANCE_INDEX: '0'
       VCAP_APPLICATION: >
-        {"name": "web"}
+        {"name": "osc-web", "application_id": "docker"}
       VCAP_SERVICES: >
         { "aws-rds": [{
-            "name": "database",
+            "name": "osc-database",
             "credentials": {
-              "db_name": "mysql",
+              "db_name": "drupal",
               "host": "database",
               "password": "mysql",
               "port": "3306",
@@ -30,7 +30,7 @@ services:
             }
           }],
           "user-provided": [{
-            "name": "secrets",
+            "name": "osc-secrets",
             "credentials": {
               "ADMIN_EMAIL": "secret@example.com",
               "CRON_KEY": "SECRET",

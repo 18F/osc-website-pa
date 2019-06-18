@@ -143,14 +143,16 @@ to port to other environments.
 
 ### File storage
 
-By default, we don't use S3 when running Drupal locally. If wanting to
+By default, we don't use S3 when running Drupal locally.
+
+We don't recommend this, but if you need to
 simulate the S3 environment, we need to add our credentials into the
 `VCAP_SERVICES` environment variable. Edit `docker-compose.yml` and insert
 something similar to the following above "user-provided":
 
 ```json
 "s3": [{
-  "name": "storage",
+  "name": "osc-storage",
   "credentials": {
    "access_key_id": "SECRET",
    "bucket": "SECRET",
@@ -159,15 +161,22 @@ something similar to the following above "user-provided":
   }
 }],
 ```
+And also add
+```
+      S3_BUCKET: 'SECRET'
+      S3_REGION: 'SECRET'
+```
+under the `environment:` line.
 
 To find the values we're using in cloud.gov, use
 ```
-cf env web
+cf env osc-web
 ```
 
-As with other edits to the local secrets, extra care should be taken when
-exporting your config, lest those configuration files contain the true secret
-values rather than dummy "SECRET" strings.
+**As with other edits to the local secrets, extra care should be taken when
+exporting your config and checking this data into git, lest those
+configuration files contain the true secret values rather than dummy
+"SECRET" strings.**
 
 ### Configuration workflow
 
@@ -222,7 +231,7 @@ docker-compose down # stop any running instance
 docker-compose up # start a new one with our code
 ```
 
-Then navigate to [http://localhost:8080](http://localhost:8080) and log in as
+Then navigate to [http://localhost:8080](http://localhost:8080/user/login) and log in as
 the root/root. Modify whatever settings desired, which will modify them in
 your local database. We'll next need to export those configurations to the
 file system:
@@ -383,44 +392,22 @@ Generally, `down` spins down the running environment but doesn't delete any
 data. The `-v` flag, however, tells Docker to delete our data "volumes",
 clearing away all the database files.
 
-## Deploying code
+## Deploying code to cloud.gov
 
 We prefer deploying code through a continuous integration system. This ensures
 reproducibility and allows us to add additional safeguards. Regardless of
 environment, however, our steps for deploying code are more or less the same:
-1. Install the `cf` executable and `autopilot` plugin (this can be done once)
+1. Install the `cf` executable (this can be done once)
 1. Clone a *fresh* copy of the repository (this must be done every time)
 1. Log into cloud.gov and target the appropriate environment
 1. Send our new code up to cloud.gov for deployment
 
-### Install cf/autopilot
+### Install cf
 
 Follow the Cloud Foundry
 [instructions](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html) for
 installing the `cf` executable. This command-line interface is our primary
 mechanism for interacting with cloud.gov.
-
-Though it's not required, it's also a good idea to install the `autopilot`
-plugin, which lets us deploy without downtime. `cf` will allow us to spin down
-our old code and spin up new code in its place, which implies some downtime.
-The `autopilot` plugin [goes
-further](https://github.com/contraband/autopilot#method) by letting us spin up
-a _second_ set of instances prior to deleting the old. Installation involves
-downloading the latest version of the plugin, ensuring that binary is
-executable, and telling `cf` about it. Below we have commands for a Linux
-environment, but OSX and Windows would be similar:
-
-```sh
-# Get the binary
-wget "https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux"
-# Make it executable
-chmod a+x autopilot-linux
-# Tell cf it exists
-cf install-plugin autopilot-linux
-```
-
-If performing a deployment manually (outside of CI), note that you'll only
-need to install these executables once for use with all future deployments.
 
 ### Clone a fresh copy of the repo
 
@@ -450,6 +437,17 @@ We'll also want to **c**hange our **d**irectory to be inside the repository.
 cd osc-website-pa
 ```
 
+### Send our new code up to cloud.gov
+
+An easy way to do this is to run the `deploy-cloudgov.sh` script.
+It should create the services you need (if they are not already created),
+wait until the services are up, and then launch the app and tell you
+what URL you should go to.
+
+As a part of this process, some secrets are generated, like the initial
+root password.  If you want, you can override this by saying:
+`export ROOT_USER_PASS=yourreallygr3atpassw0rd.` and then running the
+`deploy-cloudgov.sh` script.
 
 ## Notes on cloud.gov
 
@@ -469,19 +467,19 @@ We'll assume you're already logged into cloud.gov. From there,
 cf apps
 ```
 will give a broad overview of the current application instances. We expect two
-"web" instances and one "cronish" worker in our environments, as described in
+"osc-web" instances and one "osc-cronish" worker in our environments, as described in
 our manifest files.
 
 ```
-cf app web
+cf app osc-web
 ```
 will give us more detail about the "web" instances, specifically CPU, disk,
 and memory usage.
 
 ```
-cf logs web
+cf logs osc-web
 ```
-will let us attach to the emitted apache logs of our running "web" instances.
+will let us attach to the emitted apache logs of our running "osc-web" instances.
 If we add the `--recent` flag, we'll instead get output from our *recent* log
 history (and not see new logs as they come in). We can use these logs to debug
 500 errors. Be sure to look at cloud.gov's [logging
@@ -494,13 +492,13 @@ cloud.gov [docs on the topic](https://cloud.gov/docs/apps/using-ssh/) for more
 detail -- be sure to read the step about setting up the ssh environment.
 
 ```
-cf ssh web
+cf ssh osc-web
 ```
 
 While the database isn't generally accessible outside the app's network, we
 can access it by setting up an SSH tunnel, as described in the
 [cf-service-connect](https://github.com/18F/cf-service-connect#readme) plugin.
-Note that the `web` and `cronish` instances don't have a `mysql` client (aside
+Note that the `osc-web` and `osc-cronish` instances don't have a `mysql` client (aside
 from PHP's PDO); sshing into them likely won't help.
 
 Of course, there are many more useful commands. Explore the cloud.gov [user
@@ -517,15 +515,15 @@ the same) at once.
 To grab the previous versions of these values, we can run
 
 ```
-cf env web
+cf env osc-web
 ```
 
-and look in the results for the credentials of our "secrets" service (it'll be
-part of the `VCAP_SERVICES` section). Then, we update our `secrets` service
+and look in the results for the credentials of our "osc-secrets" service (it'll be
+part of the `VCAP_SERVICES` section). Then, we update our `osc-secrets` service
 like so:
 
 ```
-cf update-user-provided-service secrets -p '{"SAMPLE_ACCOUNT":"Some Value", "SAMPLE_CLIENT":"Another value", ...}'
+cf update-user-provided-service osc-secrets -p '{"SAMPLE_ACCOUNT":"Some Value", "SAMPLE_CLIENT":"Another value", ...}'
 ```
 
 ### Updating PHP
