@@ -76,15 +76,13 @@ S3_REGION=$(echo "$S3INFO" | grep '"region":' | sed 's/.*"region": "\(.*\)",/\1/
 cf set-env osc-web S3_BUCKET "$S3_BUCKET"
 cf set-env osc-web S3_REGION "$S3_REGION"
 cf delete-service-key osc-storage storagekey -f
-# This is a bit heavyweight, but it is the only way to get the environment variables to take effect.
-cf restage osc-web
+cf restart osc-web
 
 # tell people where to go
 ROUTE=$(cf apps | grep osc-web | awk '{print $6}')
-
 echo
 echo
-echo "  to log into the osc-drupal site, you will want to go to https://${ROUTE}/user/login and use"
-echo "USERNAME:  ${ROOT_USER_NAME}"
-echo "PASSWORD:  ${ROOT_USER_PASS}"
+echo "  to log into the osc-drupal site, you will want to go to https://${ROUTE}/user/login and get the username/password from the output of these commands:"
+echo "USERNAME:  cf e osc-web | grep ROOT_USER_NAME | sed 's/.*: \"\(.*\)\".*/\1/'"
+echo "PASSWORD:  cf e osc-web | grep ROOT_USER_PASS | sed 's/.*: \"\(.*\)\".*/\1/'"
 echo "  to get in.  Have fun!"
