@@ -82,7 +82,7 @@ cf restart osc-web
 ROUTE=$(cf apps | grep osc-web | awk '{print $6}')
 echo
 echo
-echo "  to log into the osc-drupal site, you will want to go to https://${ROUTE}/user/login and get the username/password from the output of these commands:"
+echo "  to log into the osc-drupal site, you will want to get the username/password from the output of these commands:"
 echo "USERNAME:  cf e osc-web | grep ROOT_USER_NAME | sed 's/.*: \"\(.*\)\".*/\1/'"
 echo "PASSWORD:  cf e osc-web | grep ROOT_USER_PASS | sed 's/.*: \"\(.*\)\".*/\1/'"
-echo "  to get in.  Have fun!"
+echo "  then go to https://${ROUTE}/user/login and login. Have fun!"
